@@ -1,27 +1,28 @@
 {% comment %}MAXFOOT Blog Display Section{% endcomment %}
-{{ 'component-card.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .blog-section {
-    padding: 80px 0;
-    background-color: #F9F9F9;
+    padding: 120px 0;
+    background-color: #FFFFFF;
+  }
+
+  .blog-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
   }
 
   .blog-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 3rem;
-    padding: 0 3.2rem;
-    max-width: 1440px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 48px;
   }
 
   .blog-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 700;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 600;
     letter-spacing: -0.02em;
     color: #1A1C1C;
     margin: 0;
@@ -29,54 +30,42 @@
 
   .blog-view-all {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #785a00;
+    color: #FFC426;
     text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
+    border-bottom: 2px solid #FFC426;
+    padding-bottom: 4px;
+    transition: opacity 0.2s ease;
   }
 
   .blog-view-all:hover {
-    color: #FFC426;
-    gap: 0.75rem;
-  }
-
-  .blog-container {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 3.2rem;
+    opacity: 0.8;
   }
 
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 40px;
   }
 
   .blog-card {
-    background: #FFFFFF;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 1px solid rgba(26,28,28,0.08);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
+    transition: transform 0.3s ease;
   }
 
   .blog-card:hover {
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
     transform: translateY(-4px);
   }
 
   .blog-card-media {
     position: relative;
     aspect-ratio: 16/10;
+    border-radius: 16px;
     overflow: hidden;
+    margin-bottom: 24px;
+    background-color: #F5F5F5;
   }
 
   .blog-card-media img {
@@ -92,145 +81,117 @@
 
   .blog-card-label {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
+    top: 16px;
+    left: 16px;
     background-color: #FFC426;
-    color: #1A1C1C;
+    color: #785a00;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.625rem;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-  }
-
-  .blog-card-content {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+    padding: 6px 12px;
+    border-radius: 4px;
   }
 
   .blog-card-meta {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 12px;
   }
 
   .blog-card-date {
-    font-family: 'Lexend', sans-serif;
-    font-size: 0.75rem;
-    color: #9ca3af;
-  }
-
-  .blog-card-author {
-    font-family: 'Lexend', sans-serif;
-    font-size: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
     color: #9ca3af;
   }
 
   .blog-card-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.125rem;
+    font-size: 24px;
     font-weight: 600;
     color: #1A1C1C;
-    margin: 0 0 0.75rem 0;
+    margin: 0 0 12px 0;
     line-height: 1.3;
+    transition: color 0.2s ease;
+  }
+
+  .blog-card:hover .blog-card-title {
+    color: #FFC426;
+  }
+
+  .blog-card-excerpt {
+    font-family: 'Lexend', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6B7280;
+    margin: 0 0 16px 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .blog-card-excerpt {
-    font-family: 'Lexend', sans-serif;
-    font-size: 0.875rem;
-    color: #6b7280;
-    margin: 0 0 1.25rem 0;
-    line-height: 1.6;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    flex: 1;
-  }
-
-  .blog-card-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+  .blog-card-link {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.75rem;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #785a00;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-
-  .blog-card-button:hover {
     color: #FFC426;
-    gap: 0.75rem;
+    text-decoration: none;
+    transition: transform 0.2s ease;
+    display: inline-block;
   }
 
-  .blog-card-button svg {
-    transition: transform 0.3s ease;
-  }
-
-  .blog-card-button:hover svg {
+  .blog-card:hover .blog-card-link {
     transform: translateX(4px);
   }
 
-  /* Mobile responsive */
+  /* Responsive */
   @media screen and (max-width: 989px) {
     .blog-grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+    }
+
+    .blog-section {
+      padding: 80px 0;
     }
   }
 
   @media screen and (max-width: 749px) {
-    .blog-section {
-      padding: 60px 0;
+    .blog-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
     }
 
     .blog-header {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1rem;
+      gap: 16px;
+      margin-bottom: 32px;
     }
 
-    .blog-grid {
-      grid-template-columns: 1fr;
+    .blog-section {
+      padding: 60px 0;
     }
 
-    .blog-card-content {
-      padding: 1.25rem;
+    .blog-container {
+      padding: 0 24px;
     }
   }
 {%- endstyle -%}
 
 <section class="blog-section">
-  <div class="blog-header">
-    {%- if section.settings.title != blank -%}
-      <h2 class="blog-title">{{ section.settings.title }}</h2>
-    {%- else -%}
-      <h2 class="blog-title">FROM THE JOURNAL</h2>
-    {%- endif -%}
-
-    {%- if section.settings.view_all_link != blank -%}
-      <a href="{{ section.settings.view_all_link }}" class="blog-view-all">
-        {{ section.settings.view_all_text | default: 'VIEW ALL POSTS' }}
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    {%- endif -%}
-  </div>
-
   <div class="blog-container">
+    <div class="blog-header">
+      <h2 class="blog-title">{{ section.settings.title | default: 'Latest Stories' }}</h2>
+      <a href="{{ section.settings.view_all_link }}" class="blog-view-all">
+        {{ section.settings.view_all_text | default: 'ALL STORIES' }}
+      </a>
+    </div>
+
     {%- if section.blocks.size > 0 -%}
       <div class="blog-grid">
         {%- for block in section.blocks -%}
@@ -238,70 +199,20 @@
             <a href="{{ block.settings.article.url }}" class="blog-card" {{ block.shopify_attributes }}>
               <div class="blog-card-media">
                 {%- if block.settings.image != blank -%}
-                  <img
-                    src="{{ block.settings.image | image_url: width: 600 }}"
-                    alt="{{ block.settings.image.alt | escape }}"
-                    loading="lazy"
-                    width="600"
-                    height="375"
-                  >
+                  <img src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
                 {%- elsif block.settings.article != blank -%}
-                  <img
-                    src="{{ block.settings.article.image | image_url: width: 600 }}"
-                    alt="{{ block.settings.article.title | escape }}"
-                    loading="lazy"
-                    width="600"
-                    height="375"
-                  >
-                {%- else -%}
-                  <div class="placeholder-bg" style="background-color: #e5e5e5; height: 100%; display: flex; align-items: center; justify-content: center;">
-                    <span style="color: #9ca3af; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;">BLOG IMAGE</span>
-                  </div>
+                  <img src="{{ block.settings.article.image | image_url: width: 600 }}" alt="{{ block.settings.article.title | escape }}" loading="lazy">
                 {%- endif -%}
-
                 {%- if block.settings.label != blank -%}
                   <span class="blog-card-label">{{ block.settings.label }}</span>
                 {%- endif -%}
               </div>
-
-              <div class="blog-card-content">
-                <div class="blog-card-meta">
-                  {%- if block.settings.article != blank and block.settings.article.metafields.custom.author.value != blank -%}
-                    <span class="blog-card-author">{{ block.settings.article.metafields.custom.author.value }}</span>
-                  {%- elsif block.settings.author != blank -%}
-                    <span class="blog-card-author">{{ block.settings.author }}</span>
-                  {%- endif -%}
-
-                  {%- if block.settings.article != blank and block.settings.article.published_at != blank -%}
-                    <span class="blog-card-date">{{ block.settings.article.published_at | date: '%B %d, %Y' }}</span>
-                  {%- elsif block.settings.date != blank -%}
-                    <span class="blog-card-date">{{ block.settings.date }}</span>
-                  {%- endif -%}
-                </div>
-
-                <h3 class="blog-card-title">
-                  {%- if block.settings.article != blank -%}
-                    {{ block.settings.article.title }}
-                  {%- else -%}
-                    {{ block.settings.title | default: 'Blog Post Title' }}
-                  {%- endif -%}
-                </h3>
-
-                <p class="blog-card-excerpt">
-                  {%- if block.settings.article != blank and block.settings.article.excerpt != blank -%}
-                    {{ block.settings.article.excerpt }}
-                  {%- else -%}
-                    {{ block.settings.excerpt | default: 'Read more about this article and discover insights on electric biking, adventure stories, and more.' }}
-                  {%- endif -%}
-                </p>
-
-                <span class="blog-card-button">
-                  READ MORE
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </span>
+              <div class="blog-card-meta">
+                <span class="blog-card-date">{{ block.settings.date | default: 'MARCH 15, 2024' }}</span>
               </div>
+              <h3 class="blog-card-title">{{ block.settings.title | default: block.settings.article.title }}</h3>
+              <p class="blog-card-excerpt">{{ block.settings.excerpt }}</p>
+              <span class="blog-card-link">READ MORE →</span>
             </a>
           {%- endif -%}
         {%- endfor -%}
@@ -310,71 +221,47 @@
       <div class="blog-grid">
         <a href="#" class="blog-card">
           <div class="blog-card-media">
-            <div class="placeholder-bg" style="background-color: #e5e5e5; height: 100%; display: flex; align-items: center; justify-content: center;">
-              <span style="color: #9ca3af; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;">BLOG IMAGE</span>
-            </div>
-            <span class="blog-card-label">GUIDES</span>
-          </div>
-          <div class="blog-card-content">
-            <div class="blog-card-meta">
-              <span class="blog-card-author">By MAXFOOT Team</span>
-              <span class="blog-card-date">January 15, 2026</span>
-            </div>
-            <h3 class="blog-card-title">Ultimate Guide to Electric Bike Maintenance</h3>
-            <p class="blog-card-excerpt">Learn essential maintenance tips to keep your MAXFOOT e-bike running smoothly for years to come.</p>
-            <span class="blog-card-button">
-              READ MORE
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
-          </div>
-        </a>
-
-        <a href="#" class="blog-card">
-          <div class="blog-card-media">
-            <div class="placeholder-bg" style="background-color: #e5e5e5; height: 100%; display: flex; align-items: center; justify-content: center;">
-              <span style="color: #9ca3af; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;">BLOG IMAGE</span>
+            <div style="width:100%;height:100%;background:#F5F5F5;display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">BLOG IMAGE</span>
             </div>
             <span class="blog-card-label">ADVENTURE</span>
           </div>
-          <div class="blog-card-content">
-            <div class="blog-card-meta">
-              <span class="blog-card-author">By Sarah Chen</span>
-              <span class="blog-card-date">January 08, 2026</span>
-            </div>
-            <h3 class="blog-card-title">5 Scenic E-Bike Trails You Must Explore in 2026</h3>
-            <p class="blog-card-excerpt">Discover breathtaking routes perfect for your MAXFOOT e-bike, from coastal highways to mountain passes.</p>
-            <span class="blog-card-button">
-              READ MORE
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">MARCH 15, 2024</span>
           </div>
+          <h3 class="blog-card-title">Conquering the High Sierras with the M-3</h3>
+          <p class="blog-card-excerpt">Discover how our latest fat-tire model handled the rugged terrain and elevation changes of the Sierra Nevada trails.</p>
+          <span class="blog-card-link">READ MORE →</span>
         </a>
 
         <a href="#" class="blog-card">
           <div class="blog-card-media">
-            <div class="placeholder-bg" style="background-color: #e5e5e5; height: 100%; display: flex; align-items: center; justify-content: center;">
-              <span style="color: #9ca3af; font-family: 'Space Grotesk', sans-serif; font-size: 0.75rem; letter-spacing: 0.1em;">BLOG IMAGE</span>
+            <div style="width:100%;height:100%;background:#F5F5F5;display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">BLOG IMAGE</span>
             </div>
-            <span class="blog-card-label">TECHNOLOGY</span>
+            <span class="blog-card-label">TECH</span>
           </div>
-          <div class="blog-card-content">
-            <div class="blog-card-meta">
-              <span class="blog-card-author">By James Thompson</span>
-              <span class="blog-card-date">December 28, 2025</span>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">FEBRUARY 28, 2024</span>
+          </div>
+          <h3 class="blog-card-title">The Science of High-Torque Hub Motors</h3>
+          <p class="blog-card-excerpt">A deep dive into the engineering behind our 750W brushless motor and how it delivers consistent power.</p>
+          <span class="blog-card-link">READ MORE →</span>
+        </a>
+
+        <a href="#" class="blog-card">
+          <div class="blog-card-media">
+            <div style="width:100%;height:100%;background:#F5F5F5;display:flex;align-items:center;justify-content:center;">
+              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">BLOG IMAGE</span>
             </div>
-            <h3 class="blog-card-title">Understanding MAXFOOT Motor Technology</h3>
-            <p class="blog-card-excerpt">Deep dive into how our 750W motors deliver unparalleled power and efficiency for any terrain.</p>
-            <span class="blog-card-button">
-              READ MORE
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </span>
+            <span class="blog-card-label">LIFESTYLE</span>
           </div>
+          <div class="blog-card-meta">
+            <span class="blog-card-date">JANUARY 12, 2024</span>
+          </div>
+          <h3 class="blog-card-title">Urban Mobility: The Future is Electric</h3>
+          <p class="blog-card-excerpt">How electric bikes are reshaping city transportation and reducing the carbon footprint of daily commutes.</p>
+          <span class="blog-card-link">READ MORE →</span>
         </a>
       </div>
     {%- endif -%}
@@ -391,13 +278,13 @@
       "type": "text",
       "id": "title",
       "label": "Section Title",
-      "default": "FROM THE JOURNAL"
+      "default": "Latest Stories"
     },
     {
       "type": "text",
       "id": "view_all_text",
-      "label": "View All Button Text",
-      "default": "VIEW ALL POSTS"
+      "label": "View All Link Text",
+      "default": "ALL STORIES"
     },
     {
       "type": "url",
@@ -410,48 +297,12 @@
       "type": "post",
       "name": "Blog Post",
       "settings": [
-        {
-          "type": "article",
-          "id": "article",
-          "label": "Select Article",
-          "info": "Leave empty to use manual fields below"
-        },
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Custom Image",
-          "info": "Leave empty to use article image. Recommended size: 600x375px"
-        },
-        {
-          "type": "text",
-          "id": "label",
-          "label": "Category Label",
-          "info": "e.g., GUIDES, ADVENTURE, TECHNOLOGY"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Custom Title",
-          "info": "Leave empty to use article title"
-        },
-        {
-          "type": "text",
-          "id": "author",
-          "label": "Author",
-          "info": "Leave empty to use article author"
-        },
-        {
-          "type": "text",
-          "id": "date",
-          "label": "Date",
-          "info": "Leave empty to use article date"
-        },
-        {
-          "type": "textarea",
-          "id": "excerpt",
-          "label": "Excerpt",
-          "info": "Leave empty to use article excerpt"
-        }
+        { "type": "article", "id": "article", "label": "Select Article" },
+        { "type": "image_picker", "id": "image", "label": "Custom Image" },
+        { "type": "text", "id": "label", "label": "Category Label" },
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "text", "id": "date", "label": "Date" },
+        { "type": "textarea", "id": "excerpt", "label": "Excerpt" }
       ]
     }
   ],

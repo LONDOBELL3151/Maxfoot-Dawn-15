@@ -1,0 +1,160 @@
+{% comment %}MAXFOOT Technical Specification Highlights{% endcomment %}
+
+{%- style -%}
+  .tech-spec-section {
+    padding: 120px 0;
+    background-color: #F9F9F9;
+  }
+
+  .tech-spec-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  .tech-spec-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .tech-spec-card {
+    background: #FFFFFF;
+    border: 1px solid #E5E5E5;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    transition: border-color 0.2s ease;
+  }
+
+  .tech-spec-card:hover {
+    border-color: #FFC426;
+  }
+
+  .tech-spec-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .tech-spec-icon svg {
+    width: 48px;
+    height: 48px;
+    color: #FFC426;
+  }
+
+  .tech-spec-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #1A1C1C;
+    margin-bottom: 8px;
+  }
+
+  .tech-spec-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9ca3af;
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 989px) {
+    .tech-spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tech-spec-section {
+      padding: 80px 0;
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .tech-spec-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .tech-spec-section {
+      padding: 60px 0;
+    }
+
+    .tech-spec-container {
+      padding: 0 24px;
+    }
+
+    .tech-spec-card {
+      padding: 24px 16px;
+    }
+
+    .tech-spec-value {
+      font-size: 24px;
+    }
+
+    .tech-spec-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+{%- endstyle -%}
+
+<section class="tech-spec-section">
+  <div class="tech-spec-container">
+    <div class="tech-spec-grid">
+      <div class="tech-spec-card">
+        <div class="tech-spec-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+          </svg>
+        </div>
+        <h3 class="tech-spec-value">750W</h3>
+        <p class="tech-spec-label">Brushless Motor</p>
+      </div>
+
+      <div class="tech-spec-card">
+        <div class="tech-spec-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/>
+          </svg>
+        </div>
+        <h3 class="tech-spec-value">60 MILES</h3>
+        <p class="tech-spec-label">Estimated Range</p>
+      </div>
+
+      <div class="tech-spec-card">
+        <div class="tech-spec-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.39-2.1 1.39-1.6 0-2.23-.72-2.32-1.64H8.04c.1 1.7 1.36 2.66 2.86 2.97V19h2.34v-1.67c1.52-.29 2.72-1.16 2.73-2.77-.01-2.2-1.9-2.96-3.66-3.42z"/>
+          </svg>
+        </div>
+        <h3 class="tech-spec-value">28 MPH</h3>
+        <p class="tech-spec-label">Top Speed</p>
+      </div>
+
+      <div class="tech-spec-card">
+        <div class="tech-spec-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 6l-3.75 5 2.85 3.8-1.6 1.2C9.81 13.75 7 10 7 10l-6 8h22L14 6z"/>
+          </svg>
+        </div>
+        <h3 class="tech-spec-value">FAT TIRE</h3>
+        <p class="tech-spec-label">All-Terrain Ready</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tech Specs",
+  "tag": "section",
+  "class": "section",
+  "presets": [
+    {
+      "name": "Tech Specs"
+    }
+  ]
+}
+{% endschema %}

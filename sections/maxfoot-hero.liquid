@@ -1,187 +1,263 @@
 {% comment %}MAXFOOT Hero Banner Section{% endcomment %}
-{{ 'section-hero.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .hero-section {
     position: relative;
-    width: 100%;
-    overflow: hidden;
+    background-color: #FFFFFF;
+    min-height: 870px;
+    display: flex;
+    align-items: center;
   }
 
-  .hero-media {
-    position: relative;
+  .hero-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 32px;
     width: 100%;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-
-  .hero-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(26,28,28,0.6) 0%, rgba(26,28,28,0.2) 100%);
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+    align-items: center;
   }
 
   .hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    grid-column: span 6;
     z-index: 10;
-    width: 90%;
-    max-width: 800px;
+    padding: 48px 0;
   }
 
-  .hero-subtitle {
+  .hero-badge {
+    display: inline-block;
+    background-color: #FFC426;
+    color: #785a00;
+    padding: 4px 16px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+
+  .hero-badge span {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 700;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #FFC426;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.2s;
   }
 
   .hero-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 900;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 700;
     line-height: 1.1;
-    letter-spacing: -0.02em;
-    color: #FFFFFF;
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.4s;
+    letter-spacing: -0.04em;
+    color: #1A1C1C;
+    margin-bottom: 24px;
+  }
+
+  .hero-title .highlight {
+    color: #FFC426;
   }
 
   .hero-description {
     font-family: 'Lexend', sans-serif;
-    font-size: 1.125rem;
+    font-size: 18px;
     line-height: 1.6;
-    color: rgba(255,255,255,0.85);
-    margin-bottom: 2.5rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.6s;
+    color: #4f4633;
+    margin-bottom: 40px;
+    max-width: 520px;
   }
 
-  .hero-button {
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    sm-flex-direction: row;
+  }
+
+  .hero-btn-primary {
     display: inline-flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 2.5rem;
+    justify-content: center;
     background-color: #FFC426;
-    color: #1A1C1C;
+    color: #785a00;
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.875rem;
+    font-size: 18px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    text-decoration: none;
+    padding: 16px 40px;
     border-radius: 8px;
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s ease forwards;
-    animation-delay: 0.8s;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
   }
 
-  .hero-button:hover {
-    background-color: #e6b020;
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(255,196,38,0.3);
+  .hero-btn-primary:hover {
+    opacity: 0.9;
   }
 
-  .hero-button svg {
-    transition: transform 0.3s ease;
+  .hero-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: #1A1C1C;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 40px;
+    border: 2px solid #1A1C1C;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s ease;
   }
 
-  .hero-button:hover svg {
-    transform: translateX(4px);
+  .hero-btn-secondary:hover {
+    background-color: #1A1C1C;
+    color: #FFFFFF;
   }
 
-  @keyframes fadeInUp {
-    to {
-      opacity: 1;
-      transform: translateY(0);
+  .hero-media {
+    grid-column: span 6;
+    position: relative;
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: scale(1.1);
+  }
+
+  .hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #f3f3f4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-placeholder span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #9ca3af;
+  }
+
+  .hero-decorative {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(from #f5f5f5 to transparent, circle);
+    opacity: 0.5;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  /* Mobile Responsive */
+  @media screen and (max-width: 989px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .hero-content {
+      grid-column: span 1;
+      padding: 48px 0 0 0;
+      order: 2;
+    }
+
+    .hero-media {
+      grid-column: span 1;
+      height: 400px;
+      order: 1;
+    }
+
+    .hero-buttons {
+      flex-direction: row;
+      flex-wrap: wrap;
     }
   }
 
-  /* Mobile adjustments */
   @media screen and (max-width: 749px) {
+    .hero-section {
+      min-height: auto;
+    }
+
+    .hero-container {
+      padding: 0 24px;
+    }
+
     .hero-content {
-      padding: 2rem 0;
+      padding: 32px 0 0 0;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+      width: 100%;
+      text-align: center;
+      padding: 14px 24px;
+      font-size: 14px;
     }
   }
 {%- endstyle -%}
 
 <section class="hero-section">
-  <div class="hero-media">
-    {%- if section.settings.image_pc != blank -%}
-      <img
-        src="{{ section.settings.image_pc | image_url: width: 1920 }}"
-        alt="{{ section.settings.image_pc.alt | escape }}"
-        class="hero-image hide-mobile"
-        loading="eager"
-        fetchpriority="high"
-      >
-    {%- else -%}
-      <div class="placeholder-bg" style="background-color: #1A1C1C; height: 70vh; display: flex; align-items: center; justify-content: center;">
-        <span style="color: #FFC426; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; letter-spacing: 0.2em;">UPLOAD PC BANNER IMAGE</span>
+  <div class="hero-container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span>NEW GENERATION E-BIKE</span>
       </div>
-    {%- endif -%}
-
-    {%- if section.settings.image_mobile != blank -%}
-      <img
-        src="{{ section.settings.image_mobile | image_url: width: 800 }}"
-        alt="{{ section.settings.image_mobile.alt | escape }}"
-        class="hero-image hide-desktop"
-        loading="eager"
-      >
-    {%- else -%}
-      <div class="placeholder-bg hide-desktop" style="background-color: #1A1C1C; height: 60vh; display: flex; align-items: center; justify-content: center;">
-        <span style="color: #FFC426; font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; letter-spacing: 0.2em;">UPLOAD MOBILE BANNER IMAGE</span>
+      <h1 class="hero-title">
+        Unleash the <span class="highlight">RAW</span> Power
+      </h1>
+      <p class="hero-description">
+        Meet the M-3, a high-torque beast engineered for those who demand uncompromising performance on every terrain. Experience the pinnacle of electric propulsion.
+      </p>
+      <div class="hero-buttons">
+        {%- if section.settings.button_primary_text != blank -%}
+          <a href="{{ section.settings.button_primary_link }}" class="hero-btn-primary">
+            {{ section.settings.button_primary_text }}
+          </a>
+        {%- else -%}
+          <a href="#" class="hero-btn-primary">PRE-ORDER NOW</a>
+        {%- endif -%}
+        {%- if section.settings.button_secondary_text != blank -%}
+          <a href="{{ section.settings.button_secondary_link }}" class="hero-btn-secondary">
+            {{ section.settings.button_secondary_text }}
+          </a>
+        {%- else -%}
+          <a href="#" class="hero-btn-secondary">TECHNICAL SPECS</a>
+        {%- endif -%}
       </div>
-    {%- endif -%}
-
-    <div class="hero-overlay"></div>
-  </div>
-
-  <div class="hero-content">
-    {%- if section.settings.subtitle != blank -%}
-      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
-
-    {%- if section.settings.title != blank -%}
-      <h1 class="hero-title">{{ section.settings.title }}</h1>
-    {%- endif -%}
-
-    {%- if section.settings.description != blank -%}
-      <p class="hero-description">{{ section.settings.description }}</p>
-    {%- endif -%}
-
-    {%- if section.settings.button_text != blank and section.settings.button_link != blank -%}
-      <a href="{{ section.settings.button_link }}" class="hero-button">
-        {{ section.settings.button_text }}
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    {%- endif -%}
+    </div>
+    <div class="hero-media">
+      <div class="hero-decorative"></div>
+      {%- if section.settings.image_pc != blank -%}
+        <img
+          src="{{ section.settings.image_pc | image_url: width: 800 }}"
+          alt="{{ section.settings.image_pc.alt | escape }}"
+          class="hero-image"
+          loading="eager"
+        >
+      {%- else -%}
+        <div class="hero-placeholder">
+          <span>UPLOAD HERO IMAGE</span>
+        </div>
+      {%- endif -%}
+    </div>
   </div>
 </section>
 
@@ -194,43 +270,36 @@
     {
       "type": "image_picker",
       "id": "image_pc",
-      "label": "PC Banner Image",
-      "info": "Recommended size: 1920x800px"
+      "label": "Hero Image (PC)",
+      "info": "Recommended size: 800x700px"
     },
     {
       "type": "image_picker",
       "id": "image_mobile",
-      "label": "Mobile Banner Image",
+      "label": "Hero Image (Mobile)",
       "info": "Recommended size: 800x600px"
     },
     {
       "type": "text",
-      "id": "subtitle",
-      "label": "Subtitle",
-      "info": "Leave empty to hide"
-    },
-    {
-      "type": "text",
-      "id": "title",
-      "label": "Main Title",
-      "info": "Leave empty to hide"
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "info": "Leave empty to hide"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "info": "Leave empty to hide button"
+      "id": "button_primary_text",
+      "label": "Primary Button Text",
+      "default": "PRE-ORDER NOW"
     },
     {
       "type": "url",
-      "id": "button_link",
-      "label": "Button Link"
+      "id": "button_primary_link",
+      "label": "Primary Button Link"
+    },
+    {
+      "type": "text",
+      "id": "button_secondary_text",
+      "label": "Secondary Button Text",
+      "default": "TECHNICAL SPECS"
+    },
+    {
+      "type": "url",
+      "id": "button_secondary_link",
+      "label": "Secondary Button Link"
     }
   ],
   "presets": [

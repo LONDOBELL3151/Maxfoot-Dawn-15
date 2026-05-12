@@ -8,79 +8,32 @@
     "product_grid": {
       "type": "maxfoot-product-grid",
       "blocks": {
-        "product_1": {
-          "type": "product",
-          "settings": {
-          }
-        },
-        "product_2": {
-          "type": "product",
-          "settings": {
-          }
-        },
-        "product_3": {
-          "type": "product",
-          "settings": {
-          }
-        },
-        "product_4": {
-          "type": "product",
-          "settings": {
-          }
-        },
-        "product_5": {
-          "type": "product",
-          "settings": {
-          }
-        },
-        "product_6": {
-          "type": "product",
-          "settings": {
-          }
-        }
+        "product_1": { "type": "product", "settings": {} },
+        "product_2": { "type": "product", "settings": {} },
+        "product_3": { "type": "product", "settings": {} },
+        "product_4": { "type": "product", "settings": {} },
+        "product_5": { "type": "product", "settings": {} },
+        "product_6": { "type": "product", "settings": {} }
       },
-      "block_order": [
-        "product_1",
-        "product_2",
-        "product_3",
-        "product_4",
-        "product_5",
-        "product_6"
-      ],
+      "block_order": ["product_1", "product_2", "product_3", "product_4", "product_5", "product_6"],
       "settings": {
-        "title": "ENGINEERED SERIES"
+        "title": "HOT SELLING"
+      }
+    },
+    "tech_specs": {
+      "type": "maxfoot-tech-specs",
+      "settings": {
       }
     },
     "bento_grid": {
       "type": "maxfoot-bento-grid",
       "blocks": {
-        "conquer_peak": {
-          "type": "conquer_peak",
-          "settings": {
-          }
-        },
-        "built_bold": {
-          "type": "built_bold",
-          "settings": {
-          }
-        },
-        "precision": {
-          "type": "precision",
-          "settings": {
-          }
-        },
-        "seamless_city": {
-          "type": "seamless_city",
-          "settings": {
-          }
-        }
+        "conquer_peak": { "type": "conquer_peak", "settings": {} },
+        "built_bold": { "type": "built_bold", "settings": {} },
+        "precision": { "type": "precision", "settings": {} },
+        "seamless_city": { "type": "seamless_city", "settings": {} }
       },
-      "block_order": [
-        "conquer_peak",
-        "built_bold",
-        "precision",
-        "seamless_city"
-      ],
+      "block_order": ["conquer_peak", "built_bold", "precision", "seamless_city"],
       "settings": {
         "title": "MULTI-DIMENSIONAL PERFORMANCE"
       }
@@ -88,69 +41,33 @@
     "customer_reviews": {
       "type": "maxfoot-reviews",
       "blocks": {
-        "review_1": {
-          "type": "review",
-          "settings": {
-          }
-        },
-        "review_2": {
-          "type": "review",
-          "settings": {
-          }
-        },
-        "review_3": {
-          "type": "review",
-          "settings": {
-          }
-        },
-        "review_4": {
-          "type": "review",
-          "settings": {
-          }
-        }
+        "review_1": { "type": "review", "settings": {} },
+        "review_2": { "type": "review", "settings": {} },
+        "review_3": { "type": "review", "settings": {} },
+        "review_4": { "type": "review", "settings": {} }
       },
-      "block_order": [
-        "review_1",
-        "review_2",
-        "review_3",
-        "review_4"
-      ],
+      "block_order": ["review_1", "review_2", "review_3", "review_4"],
       "settings": {
-        "title": "CUSTOMER REVIEWS"
+        "title": "Rider Experiences"
       }
     },
     "blog_display": {
       "type": "maxfoot-blog",
       "blocks": {
-        "post_1": {
-          "type": "post",
-          "settings": {
-          }
-        },
-        "post_2": {
-          "type": "post",
-          "settings": {
-          }
-        },
-        "post_3": {
-          "type": "post",
-          "settings": {
-          }
-        }
+        "post_1": { "type": "post", "settings": {} },
+        "post_2": { "type": "post", "settings": {} },
+        "post_3": { "type": "post", "settings": {} }
       },
-      "block_order": [
-        "post_1",
-        "post_2",
-        "post_3"
-      ],
+      "block_order": ["post_1", "post_2", "post_3"],
       "settings": {
-        "title": "FROM THE JOURNAL"
+        "title": "Latest Stories"
       }
     }
   },
   "order": [
     "hero_banner",
     "product_grid",
+    "tech_specs",
     "bento_grid",
     "customer_reviews",
     "blog_display"
