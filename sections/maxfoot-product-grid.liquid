@@ -1,0 +1,323 @@
+{% comment %}MAXFOOT Product Grid Section{% endcomment %}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .product-grid-section {
+    padding: 80px 0;
+    background-color: #F9F9F9;
+  }
+
+  .product-grid-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 0 3.2rem;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .product-grid-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #1A1C1C;
+    margin: 0;
+  }
+
+  .product-grid-view-all {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #785a00;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+  }
+
+  .product-grid-view-all:hover {
+    color: #FFC426;
+    gap: 0.75rem;
+  }
+
+  .product-grid-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 989px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .product-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .product-grid-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+  }
+
+  /* Product Card */
+  .product-card-wrapper {
+    position: relative;
+  }
+
+  .product-card {
+    background: #FFFFFF;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(26,28,28,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transform: translateY(-4px);
+  }
+
+  .product-card-media {
+    position: relative;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+  }
+
+  .product-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .product-card:hover .product-card-media img {
+    transform: scale(1.05);
+  }
+
+  .product-card-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-color: #FFC426;
+    color: #1A1C1C;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+
+  .product-card-content {
+    padding: 1.5rem;
+  }
+
+  .product-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1A1C1C;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .product-card-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #785a00;
+  }
+
+  .product-card-price .compare-price {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    text-decoration: line-through;
+    margin-left: 0.5rem;
+  }
+
+  /* Empty State */
+  .product-grid-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem;
+    background: #FFFFFF;
+    border-radius: 12px;
+    border: 1px dashed rgba(26,28,28,0.2);
+  }
+
+  .product-grid-empty p {
+    font-family: 'Lexend', sans-serif;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+  }
+{%- endstyle -%}
+
+<section class="product-grid-section">
+  <div class="product-grid-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="product-grid-title">{{ section.settings.title }}</h2>
+    {%- else -%}
+      <h2 class="product-grid-title">ENGINEERED SERIES</h2>
+    {%- endif -%}
+
+    {%- if section.settings.view_all_link != blank -%}
+      <a href="{{ section.settings.view_all_link }}" class="product-grid-view-all">
+        {{ section.settings.view_all_text | default: 'VIEW ALL PRODUCTS' }}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {%- endif -%}
+  </div>
+
+  <div class="product-grid-container">
+    {%- if section.blocks.size > 0 -%}
+      <div class="product-grid">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'product' -%}
+            {%- assign product = all_products[block.settings.product] -%}
+            {%- if product != blank -%}
+              <div class="product-card-wrapper" {{ block.shopify_attributes }}>
+                <a href="{{ product.url }}" class="product-card">
+                  <div class="product-card-media">
+                    {%- if block.settings.label != blank -%}
+                      <span class="product-card-label">{{ block.settings.label }}</span>
+                    {%- endif -%}
+
+                    {%- if block.settings.image != blank -%}
+                      <img
+                        src="{{ block.settings.image | image_url: width: 600 }}"
+                        alt="{{ block.settings.image.alt | escape }}"
+                        loading="lazy"
+                        width="600"
+                        height="600"
+                      >
+                    {%- else -%}
+                      <img
+                        src="{{ product.featured_image | image_url: width: 600 }}"
+                        alt="{{ product.title | escape }}"
+                        loading="lazy"
+                        width="600"
+                        height="600"
+                      >
+                    {%- endif -%}
+                  </div>
+                  <div class="product-card-content">
+                    <h3 class="product-card-title">
+                      {{ block.settings.title | default: product.title }}
+                    </h3>
+                    <div class="product-card-price">
+                      {%- if product.compare_at_price > product.price -%}
+                        <span class="compare-price">{{ product.compare_at_price | money }}</span>
+                      {%- endif -%}
+                      {{ product.price | money }}
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="product-grid">
+        <div class="product-grid-empty">
+          <p>No products selected. Add products in the theme editor.</p>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Grid",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "ENGINEERED SERIES"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "VIEW ALL PRODUCTS"
+    },
+    {
+      "type": "url",
+      "id": "view_all_link",
+      "label": "View All Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Product Label",
+          "info": "e.g., HOT, NEW, SALE"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image",
+          "info": "Leave empty to use product featured image. Recommended size: 600x600px"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave empty to use product title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Grid",
+      "blocks": [
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" },
+        { "type": "product" }
+      ]
+    }
+  ]
+}
+{% endschema %}

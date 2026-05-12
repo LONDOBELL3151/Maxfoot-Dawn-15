@@ -1,0 +1,554 @@
+{% comment %}MAXFOOT Customer Reviews Section{% endcomment %}
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .reviews-section {
+    padding: 80px 0;
+    background-color: #1A1C1C;
+  }
+
+  .reviews-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    padding: 0 3.2rem;
+    max-width: 1440px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reviews-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin: 0 0 1rem 0;
+  }
+
+  .reviews-subtitle {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1rem;
+    color: #9ca3af;
+    margin: 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reviews-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 3.2rem;
+  }
+
+  .reviews-slider {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-track {
+    display: flex;
+    gap: 24px;
+    transition: transform 0.5s ease;
+  }
+
+  .reviews-card {
+    flex: 0 0 calc(33.333% - 16px);
+    background: #2d2f31;
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .reviews-card:hover {
+    background: #363839;
+    border-color: rgba(255,196,38,0.2);
+    transform: translateY(-4px);
+  }
+
+  .reviews-card-stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 1.25rem;
+  }
+
+  .reviews-card-stars svg {
+    width: 18px;
+    height: 18px;
+    color: #FFC426;
+  }
+
+  .reviews-card-stars svg.inactive {
+    color: #4b5563;
+  }
+
+  .reviews-card-text {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    margin: 0 0 1.5rem 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 6.8em;
+  }
+
+  .reviews-card-author {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .reviews-card-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #FFC426;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1A1C1C;
+    overflow: hidden;
+  }
+
+  .reviews-card-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .reviews-card-info {
+    flex: 1;
+  }
+
+  .reviews-card-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #FFFFFF;
+    margin: 0 0 0.25rem 0;
+  }
+
+  .reviews-card-verified {
+    font-family: 'Lexend', sans-serif;
+    font-size: 0.75rem;
+    color: #FFC426;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .reviews-card-verified svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  .reviews-nav {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .reviews-nav-button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #FFFFFF;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .reviews-nav-button:hover {
+    background: #FFC426;
+    border-color: #FFC426;
+    color: #1A1C1C;
+  }
+
+  .reviews-nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .reviews-nav-button svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .reviews-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .reviews-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.3);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+  }
+
+  .reviews-dot.active {
+    background: #FFC426;
+    width: 24px;
+    border-radius: 4px;
+  }
+
+  .reviews-dot:hover:not(.active) {
+    background: rgba(255,255,255,0.5);
+  }
+
+  /* Mobile responsive */
+  @media screen and (max-width: 989px) {
+    .reviews-card {
+      flex: 0 0 calc(50% - 12px);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .reviews-section {
+      padding: 60px 0;
+    }
+
+    .reviews-card {
+      flex: 0 0 100%;
+    }
+
+    .reviews-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .reviews-nav {
+      margin-top: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="reviews-section">
+  <div class="reviews-header">
+    {%- if section.settings.title != blank -%}
+      <h2 class="reviews-title">{{ section.settings.title }}</h2>
+    {%- else -%}
+      <h2 class="reviews-title">CUSTOMER REVIEWS</h2>
+    {%- endif -%}
+    {%- if section.settings.subtitle != blank -%}
+      <p class="reviews-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="reviews-container">
+    <div class="reviews-slider">
+      <div class="reviews-track" id="reviewsTrack">
+        {%- if section.blocks.size > 0 -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'review' -%}
+              <div class="reviews-card" {{ block.shopify_attributes }}>
+                <div class="reviews-card-stars">
+                  {%- for i in (1..5) -%}
+                    {%- if i <= block.settings.rating -%}
+                      <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                      </svg>
+                    {%- else -%}
+                      <svg class="inactive" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                      </svg>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                <p class="reviews-card-text">{{ block.settings.text }}</p>
+                <div class="reviews-card-author">
+                  {%- if block.settings.avatar != blank -%}
+                    <div class="reviews-card-avatar">
+                      <img src="{{ block.settings.avatar | image_url: width: 96, height: 96 }}" alt="{{ block.settings.name | escape }}">
+                    </div>
+                  {%- else -%}
+                    <div class="reviews-card-avatar">
+                      {{ block.settings.name | slice: 0 | upcase }}
+                    </div>
+                  {%- endif -%}
+                  <div class="reviews-card-info">
+                    <p class="reviews-card-name">{{ block.settings.name }}</p>
+                    {%- if block.settings.verified -%}
+                      <span class="reviews-card-verified">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                        </svg>
+                        Verified Buyer
+                      </span>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          <div class="reviews-card">
+            <div class="reviews-card-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <p class="reviews-card-text">The MAXFOOT bike exceeded all my expectations. The power and range are incredible, and it's become my daily commuter. Build quality is exceptional.</p>
+            <div class="reviews-card-author">
+              <div class="reviews-card-avatar">M</div>
+              <div class="reviews-card-info">
+                <p class="reviews-card-name">Michael Rodriguez</p>
+                <span class="reviews-card-verified">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  Verified Buyer
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-card">
+            <div class="reviews-card-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <p class="reviews-card-text">I've tried several e-bikes and MAXFOOT is by far the best. The 60-mile range means I can go days without charging. The design is sleek and the ride is super smooth.</p>
+            <div class="reviews-card-author">
+              <div class="reviews-card-avatar">S</div>
+              <div class="reviews-card-info">
+                <p class="reviews-card-name">Sarah Chen</p>
+                <span class="reviews-card-verified">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  Verified Buyer
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-card">
+            <div class="reviews-card-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg class="inactive" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <p class="reviews-card-text">Perfect for my weekend trail adventures. The 750W motor handles steep hills without breaking a sweat. Very impressed with the build quality and customer service.</p>
+            <div class="reviews-card-author">
+              <div class="reviews-card-avatar">J</div>
+              <div class="reviews-card-info">
+                <p class="reviews-card-name">James Thompson</p>
+                <span class="reviews-card-verified">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  Verified Buyer
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="reviews-card">
+            <div class="reviews-card-stars">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+            </div>
+            <p class="reviews-card-text">The step-through design is so convenient for my daily commute. I love that I can ride in style without sacrificing performance. Best e-bike purchase I've made!</p>
+            <div class="reviews-card-author">
+              <div class="reviews-card-avatar">E</div>
+              <div class="reviews-card-info">
+                <p class="reviews-card-name">Emily Watson</p>
+                <span class="reviews-card-verified">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+                  Verified Buyer
+                </span>
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <div class="reviews-nav">
+      <button class="reviews-nav-button" id="reviewsPrev" aria-label="Previous reviews">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="reviews-nav-button" id="reviewsNext" aria-label="Next reviews">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="reviews-dots" id="reviewsDots"></div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const track = document.getElementById('reviewsTrack');
+    const prevBtn = document.getElementById('reviewsPrev');
+    const nextBtn = document.getElementById('reviewsNext');
+    const dotsContainer = document.getElementById('reviewsDots');
+
+    if (!track || !prevBtn || !nextBtn) return;
+
+    const cards = track.querySelectorAll('.reviews-card');
+    let currentIndex = 0;
+    let cardsPerPage = 3;
+    let totalPages = Math.ceil(cards.length / cardsPerPage);
+
+    function updateCardsPerPage() {
+      if (window.innerWidth <= 749) {
+        cardsPerPage = 1;
+      } else if (window.innerWidth <= 989) {
+        cardsPerPage = 2;
+      } else {
+        cardsPerPage = 3;
+      }
+      totalPages = Math.ceil(cards.length / cardsPerPage);
+      createDots();
+      updateSlider();
+    }
+
+    function createDots() {
+      if (!dotsContainer) return;
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalPages; i++) {
+        const dot = document.createElement('button');
+        dot.className = 'reviews-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Go to page ' + (i + 1));
+        dot.addEventListener('click', () => goToPage(i));
+        dotsContainer.appendChild(dot);
+      }
+    }
+
+    function updateSlider() {
+      const cardWidth = cards[0].offsetWidth + 24;
+      track.style.transform = 'translateX(-' + (currentIndex * cardWidth * cardsPerPage) + 'px)';
+
+      const dots = dotsContainer.querySelectorAll('.reviews-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+
+      prevBtn.disabled = currentIndex === 0;
+      nextBtn.disabled = currentIndex >= totalPages - 1;
+    }
+
+    function goToPage(index) {
+      currentIndex = Math.max(0, Math.min(index, totalPages - 1));
+      updateSlider();
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateSlider();
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < totalPages - 1) {
+        currentIndex++;
+        updateSlider();
+      }
+    });
+
+    window.addEventListener('resize', updateCardsPerPage);
+    updateCardsPerPage();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Customer Reviews",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "CUSTOMER REVIEWS"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Section Subtitle",
+      "default": "See what our riders have to say about their MAXFOOT experience."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar Image",
+          "info": "Leave empty to use initials. Recommended size: 96x96px"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Customer Name",
+          "default": "Customer Name"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Star Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Review Text",
+          "default": "Add your customer review here. This section supports up to 4 lines of text with ellipsis."
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Verified Buyer",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Customer Reviews",
+      "blocks": [
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" },
+        { "type": "review" }
+      ]
+    }
+  ]
+}
+{% endschema %}

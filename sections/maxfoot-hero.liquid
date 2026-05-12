@@ -1,0 +1,242 @@
+{% comment %}MAXFOOT Hero Banner Section{% endcomment %}
+{{ 'section-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .hero-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,28,28,0.6) 0%, rgba(26,28,28,0.2) 100%);
+  }
+
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
+    width: 90%;
+    max-width: 800px;
+  }
+
+  .hero-subtitle {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FFC426;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.2s;
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.4s;
+  }
+
+  .hero-description {
+    font-family: 'Lexend', sans-serif;
+    font-size: 1.125rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.6s;
+  }
+
+  .hero-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background-color: #FFC426;
+    color: #1A1C1C;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.8s;
+  }
+
+  .hero-button:hover {
+    background-color: #e6b020;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255,196,38,0.3);
+  }
+
+  .hero-button svg {
+    transition: transform 0.3s ease;
+  }
+
+  .hero-button:hover svg {
+    transform: translateX(4px);
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Mobile adjustments */
+  @media screen and (max-width: 749px) {
+    .hero-content {
+      padding: 2rem 0;
+    }
+  }
+{%- endstyle -%}
+
+<section class="hero-section">
+  <div class="hero-media">
+    {%- if section.settings.image_pc != blank -%}
+      <img
+        src="{{ section.settings.image_pc | image_url: width: 1920 }}"
+        alt="{{ section.settings.image_pc.alt | escape }}"
+        class="hero-image hide-mobile"
+        loading="eager"
+        fetchpriority="high"
+      >
+    {%- else -%}
+      <div class="placeholder-bg" style="background-color: #1A1C1C; height: 70vh; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #FFC426; font-family: 'Space Grotesk', sans-serif; font-size: 1rem; letter-spacing: 0.2em;">UPLOAD PC BANNER IMAGE</span>
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.image_mobile != blank -%}
+      <img
+        src="{{ section.settings.image_mobile | image_url: width: 800 }}"
+        alt="{{ section.settings.image_mobile.alt | escape }}"
+        class="hero-image hide-desktop"
+        loading="eager"
+      >
+    {%- else -%}
+      <div class="placeholder-bg hide-desktop" style="background-color: #1A1C1C; height: 60vh; display: flex; align-items: center; justify-content: center;">
+        <span style="color: #FFC426; font-family: 'Space Grotesk', sans-serif; font-size: 0.875rem; letter-spacing: 0.2em;">UPLOAD MOBILE BANNER IMAGE</span>
+      </div>
+    {%- endif -%}
+
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="hero-content">
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hero-subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.title != blank -%}
+      <h1 class="hero-title">{{ section.settings.title }}</h1>
+    {%- endif -%}
+
+    {%- if section.settings.description != blank -%}
+      <p class="hero-description">{{ section.settings.description }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.button_text != blank and section.settings.button_link != blank -%}
+      <a href="{{ section.settings.button_link }}" class="hero-button">
+        {{ section.settings.button_text }}
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_pc",
+      "label": "PC Banner Image",
+      "info": "Recommended size: 1920x800px"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Banner Image",
+      "info": "Recommended size: 800x600px"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "info": "Leave empty to hide"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Main Title",
+      "info": "Leave empty to hide"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "info": "Leave empty to hide"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "info": "Leave empty to hide button"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}
