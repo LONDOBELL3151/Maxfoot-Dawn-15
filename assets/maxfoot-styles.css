@@ -1,0 +1,286 @@
+/* MAXFOOT Custom Styles */
+/* Brand Colors: Gold #FFC426, Dark #1A1C1C, Light #F9F9F9 */
+
+/* ============================================
+   BRAND FONTS - Google Fonts Import
+   ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;900&family=Lexend:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   CUSTOM PROPERTIES
+   ============================================ */
+:root {
+  /* MAXFOOT Brand Colors */
+  --color-maxfoot-gold: #FFC426;
+  --color-maxfoot-gold-dark: #785a00;
+  --color-maxfoot-dark: #1A1C1C;
+  --color-maxfoot-light: #F9F9F9;
+  --color-maxfoot-surface: #F3F3F4;
+
+  /* Typography Scale */
+  --font-headline-xl: clamp(3rem, 8vw, 4.8rem);
+  --font-display-lg: clamp(4rem, 10vw, 7.2rem);
+  --font-headline-lg: 3.2rem;
+  --font-body-lg: 1.8rem;
+  --font-body-md: 1.6rem;
+  --font-label-lg: 1.4rem;
+  --font-label-md: 1.2rem;
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.font-headline-xl,
+.font-display-lg,
+h1, h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.font-body-lg,
+.font-body-md,
+body {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+.font-label-lg,
+.font-label-md {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ============================================
+   BUTTONS - MAXFOOT Style
+   ============================================ */
+.button {
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.button--primary {
+  background-color: var(--color-maxfoot-gold);
+  color: var(--color-maxfoot-dark);
+}
+
+.button--primary:hover {
+  background-color: #e6b020;
+  transform: translateY(-2px);
+}
+
+.button--secondary {
+  background-color: var(--color-maxfoot-dark);
+  color: #ffffff;
+}
+
+.button--secondary:hover {
+  background-color: #2f3131;
+}
+
+/* ============================================
+   CARDS - Product/Collection Cards
+   ============================================ */
+.card {
+  border-radius: 12px;
+  border: 1px solid rgba(26, 28, 28, 0.08);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.card__media img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card__media img {
+  transform: scale(1.05);
+}
+
+/* ============================================
+   HEADER - MAXFOOT Navigation
+   ============================================ */
+.header {
+  backdrop-filter: blur(12px);
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.header__menu-item {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+
+.header__menu-item:hover {
+  color: var(--color-maxfoot-gold);
+}
+
+/* ============================================
+   SECTION SPACING
+   ============================================ */
+.section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+@media screen and (min-width: 750px) {
+  .section {
+    padding-top: 120px;
+    padding-bottom: 120px;
+  }
+}
+
+/* ============================================
+   PRODUCT GRID - MAXFOOT Style
+   ============================================ */
+.product-grid {
+  gap: 24px;
+}
+
+.product-grid .grid__item {
+  width: calc(33.33% - 16px);
+}
+
+@media screen and (max-width: 989px) {
+  .product-grid .grid__item {
+    width: calc(50% - 12px);
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .product-grid .grid__item {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   BADGES & LABELS
+   ============================================ */
+.badge {
+  border-radius: 20px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge--sale {
+  background-color: var(--color-maxfoot-gold);
+  color: var(--color-maxfoot-dark);
+}
+
+.badge--hot {
+  background-color: var(--color-maxfoot-gold);
+  color: var(--color-maxfoot-dark);
+}
+
+/* ============================================
+   PRICE DISPLAY
+   ============================================ */
+.price {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  color: var(--color-maxfoot-gold-dark);
+}
+
+.price--sale {
+  color: var(--color-maxfoot-gold);
+}
+
+/* ============================================
+   FOOTER - MAXFOOT Style
+   ============================================ */
+.footer {
+  background-color: var(--color-maxfoot-dark);
+  color: #ffffff;
+}
+
+.footer__menu-item {
+  font-family: 'Lexend', sans-serif;
+  font-weight: 400;
+  opacity: 0.8;
+  transition: opacity 0.2s ease;
+}
+
+.footer__menu-item:hover {
+  opacity: 1;
+  color: var(--color-maxfoot-gold);
+}
+
+/* ============================================
+   CUSTOM UTILITIES
+   ============================================ */
+.text-maxfoot-gold {
+  color: var(--color-maxfoot-gold);
+}
+
+.bg-maxfoot-gold {
+  background-color: var(--color-maxfoot-gold);
+}
+
+.bg-maxfoot-dark {
+  background-color: var(--color-maxfoot-dark);
+}
+
+.border-maxfoot-gold {
+  border-color: var(--color-maxfoot-gold);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+/* ============================================
+   CUSTOM SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-maxfoot-light);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-maxfoot-gold-dark);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-maxfoot-gold);
+}
+
+/* ============================================
+   MATERIAL SYMBOLS OVERRIDE
+   ============================================ */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
