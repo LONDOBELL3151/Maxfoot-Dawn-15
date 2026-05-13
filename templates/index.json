@@ -1,39 +1,133 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero_banner": {
       "type": "maxfoot-hero",
       "settings": {
+        "image_pc": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
+        "button_primary_text": "PRE-ORDER NOW",
+        "button_primary_link": "",
+        "button_secondary_text": "TECHNICAL SPECS",
+        "button_secondary_link": ""
       }
     },
     "product_grid": {
       "type": "maxfoot-product-grid",
       "blocks": {
-        "product_1": { "type": "product", "settings": {} },
-        "product_2": { "type": "product", "settings": {} },
-        "product_3": { "type": "product", "settings": {} },
-        "product_4": { "type": "product", "settings": {} },
-        "product_5": { "type": "product", "settings": {} },
-        "product_6": { "type": "product", "settings": {} }
+        "product_1": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        },
+        "product_2": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        },
+        "product_3": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        },
+        "product_4": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        },
+        "product_5": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        },
+        "product_6": {
+          "type": "product",
+          "settings": {
+            "product": "",
+            "label": "",
+            "title": ""
+          }
+        }
       },
-      "block_order": ["product_1", "product_2", "product_3", "product_4", "product_5", "product_6"],
+      "block_order": [
+        "product_1",
+        "product_2",
+        "product_3",
+        "product_4",
+        "product_5",
+        "product_6"
+      ],
       "settings": {
-        "title": "HOT SELLING"
+        "title": "HOT SELLING",
+        "view_all_text": "VIEW ALL PRODUCTS",
+        "view_all_link": ""
       }
     },
     "tech_specs": {
       "type": "maxfoot-tech-specs",
-      "settings": {
-      }
+      "settings": {}
     },
     "bento_grid": {
       "type": "maxfoot-bento-grid",
       "blocks": {
-        "conquer_peak": { "type": "conquer_peak", "settings": {} },
-        "built_bold": { "type": "built_bold", "settings": {} },
-        "precision": { "type": "precision", "settings": {} },
-        "seamless_city": { "type": "seamless_city", "settings": {} }
+        "conquer_peak": {
+          "type": "conquer_peak",
+          "settings": {
+            "title": "Conquer Any Peak",
+            "button_text": "EXPLORE ADVENTURE",
+            "button_link": ""
+          }
+        },
+        "built_bold": {
+          "type": "built_bold",
+          "settings": {
+            "title": "Built for the Bold.",
+            "description": "",
+            "button_text": "LEARN MORE",
+            "button_link": ""
+          }
+        },
+        "precision": {
+          "type": "precision",
+          "settings": {
+            "title": "Precision"
+          }
+        },
+        "seamless_city": {
+          "type": "seamless_city",
+          "settings": {
+            "title": "Seamless City Flow"
+          }
+        }
       },
-      "block_order": ["conquer_peak", "built_bold", "precision", "seamless_city"],
+      "block_order": [
+        "conquer_peak",
+        "built_bold",
+        "precision",
+        "seamless_city"
+      ],
       "settings": {
         "title": "MULTI-DIMENSIONAL PERFORMANCE"
       }
@@ -41,26 +135,93 @@
     "customer_reviews": {
       "type": "maxfoot-reviews",
       "blocks": {
-        "review_1": { "type": "review", "settings": {} },
-        "review_2": { "type": "review", "settings": {} },
-        "review_3": { "type": "review", "settings": {} },
-        "review_4": { "type": "review", "settings": {} }
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "rating": 5,
+            "text": ""
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "rating": 5,
+            "text": ""
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "rating": 5,
+            "text": ""
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "name": "Customer Name",
+            "rating": 5,
+            "text": ""
+          }
+        }
       },
-      "block_order": ["review_1", "review_2", "review_3", "review_4"],
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4"
+      ],
       "settings": {
-        "title": "Rider Experiences"
+        "title": "Rider Experiences",
+        "subtitle": "4.9/5 based on 1,200+ reviews"
       }
     },
     "blog_display": {
       "type": "maxfoot-blog",
       "blocks": {
-        "post_1": { "type": "post", "settings": {} },
-        "post_2": { "type": "post", "settings": {} },
-        "post_3": { "type": "post", "settings": {} }
+        "post_1": {
+          "type": "post",
+          "settings": {
+            "article": "",
+            "label": "",
+            "title": "",
+            "date": "",
+            "excerpt": ""
+          }
+        },
+        "post_2": {
+          "type": "post",
+          "settings": {
+            "article": "",
+            "label": "",
+            "title": "",
+            "date": "",
+            "excerpt": ""
+          }
+        },
+        "post_3": {
+          "type": "post",
+          "settings": {
+            "article": "",
+            "label": "",
+            "title": "",
+            "date": "",
+            "excerpt": ""
+          }
+        }
       },
-      "block_order": ["post_1", "post_2", "post_3"],
+      "block_order": [
+        "post_1",
+        "post_2",
+        "post_3"
+      ],
       "settings": {
-        "title": "Latest Stories"
+        "title": "Latest Stories",
+        "view_all_text": "ALL STORIES",
+        "view_all_link": ""
       }
     }
   },
