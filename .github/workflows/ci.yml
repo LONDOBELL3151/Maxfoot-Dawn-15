@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Theme Check
-        uses: shopify/theme-check-action@v3
+        uses: shopify/theme-check-action@v2
         with:
           token: ${{ github.token }}
   # lighthouse:
