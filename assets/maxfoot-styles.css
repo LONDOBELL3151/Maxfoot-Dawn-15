@@ -130,26 +130,6 @@ body {
 }
 
 /* ============================================
-   SECTION SPACING
-   ============================================ */
-.section {
-  padding-top: 40px;
-  padding-bottom: 40px;
-}
-
-@media screen and (min-width: 750px) {
-  .section {
-    padding-top: 60px;
-    padding-bottom: 60px;
-  }
-}
-
-.hero-section {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* ============================================
    PRODUCT GRID - MAXFOOT Style
    ============================================ */
 .product-grid {

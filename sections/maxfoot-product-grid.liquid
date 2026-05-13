@@ -2,7 +2,8 @@
 
 {%- style -%}
   .product-grid-section {
-    padding: 120px 0;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
     background-color: #FFFFFF;
   }
 
@@ -129,7 +130,8 @@
     }
 
     .product-grid-section {
-      padding: 80px 0;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
@@ -147,7 +149,8 @@
     }
 
     .product-grid-section {
-      padding: 60px 0;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
     .product-grid-container {
@@ -296,6 +299,30 @@
       "type": "url",
       "id": "view_all_link",
       "label": "View All Link"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
     }
   ],
   "blocks": [

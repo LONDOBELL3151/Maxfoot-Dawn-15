@@ -14,10 +14,8 @@
       "settings": {
         "image_pc": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
         "image_mobile": "shopify://shop_images/Gemini_Generated_Image_1tmnss1tmnss1tmn.webp",
-        "button_primary_text": "",
-        "button_primary_link": "",
-        "button_secondary_text": "",
-        "button_secondary_link": ""
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "product_grid": {
@@ -74,12 +72,17 @@
       "settings": {
         "title": "HOT SELLING",
         "view_all_text": "VIEW ALL PRODUCTS",
-        "view_all_link": ""
+        "view_all_link": "",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "tech_specs": {
       "type": "maxfoot-tech-specs",
-      "settings": {}
+      "settings": {
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
     },
     "bento_grid": {
       "type": "maxfoot-bento-grid",
@@ -121,7 +124,9 @@
         "seamless_city"
       ],
       "settings": {
-        "title": "MULTI-DIMENSIONAL PERFORMANCE"
+        "title": "MULTI-DIMENSIONAL PERFORMANCE",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "customer_reviews": {
@@ -168,7 +173,9 @@
       ],
       "settings": {
         "title": "Rider Experiences",
-        "subtitle": "4.9/5 based on 1,200+ reviews"
+        "subtitle": "4.9/5 based on 1,200+ reviews",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     },
     "blog_display": {
@@ -213,7 +220,9 @@
       "settings": {
         "title": "Latest Stories",
         "view_all_text": "ALL STORIES",
-        "view_all_link": ""
+        "view_all_link": "",
+        "padding_top": 120,
+        "padding_bottom": 120
       }
     }
   },

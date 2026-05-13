@@ -2,7 +2,8 @@
 
 {%- style -%}
   .bento-section {
-    padding: 120px 0;
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
     background-color: #FFFFFF;
   }
 
@@ -206,7 +207,8 @@
     }
 
     .bento-section {
-      padding: 80px 0;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
 
@@ -227,7 +229,8 @@
     }
 
     .bento-section {
-      padding: 60px 0;
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
     }
 
     .bento-container {
@@ -359,6 +362,30 @@
       "id": "title",
       "label": "Section Title",
       "default": "MULTI-DIMENSIONAL PERFORMANCE"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 120
     }
   ],
   "blocks": [
