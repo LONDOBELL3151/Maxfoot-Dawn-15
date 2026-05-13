@@ -13,9 +13,10 @@
       "type": "maxfoot-hero",
       "settings": {
         "image_pc": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
-        "button_primary_text": "PRE-ORDER NOW",
+        "image_mobile": "shopify://shop_images/Gemini_Generated_Image_1tmnss1tmnss1tmn.webp",
+        "button_primary_text": "",
         "button_primary_link": "",
-        "button_secondary_text": "TECHNICAL SPECS",
+        "button_secondary_text": "",
         "button_secondary_link": ""
       }
     },
