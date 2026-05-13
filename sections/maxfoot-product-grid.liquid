@@ -148,7 +148,7 @@
   /* Price + Review split layout */
   .product-card-pricing {
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     margin-bottom: 16px;
     padding-top: 12px;
@@ -156,9 +156,23 @@
   }
 
   .pricing-left {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 0;
+  }
+
+  .pricing-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    padding: 4px 0;
   }
 
   .product-card-price {
@@ -166,6 +180,7 @@
     font-size: 20px;
     font-weight: 700;
     color: #FFC426;
+    line-height: 1;
   }
 
   .product-card-compare-price {
@@ -173,25 +188,28 @@
     font-size: 14px;
     color: #9ca3af;
     text-decoration: line-through;
+    line-height: 1;
   }
 
-  .pricing-right {
+  .review-wrap {
     display: flex;
     align-items: center;
     gap: 4px;
   }
 
   .review-star {
-    width: 16px;
-    height: 16px;
+    width: 18px;
+    height: 18px;
     color: #FFC426;
+    flex-shrink: 0;
   }
 
   .review-score {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 700;
     color: #1A1C1C;
+    line-height: 1;
   }
 
   /* Button */
@@ -306,10 +324,12 @@
                       {%- endif -%}
                     </div>
                     <div class="pricing-right">
-                      <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                      </svg>
-                      <span class="review-score">{{ block.settings.review_score | default: '4.9' }}</span>
+                      <div class="review-wrap">
+                        <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                        </svg>
+                        <span class="review-score">{{ block.settings.review_score | default: '4.9' }}</span>
+                      </div>
                     </div>
                   </div>
                   {%- if block.settings.button_text != blank -%}
@@ -337,16 +357,18 @@
               <p class="product-card-subtitle">Step-thru Commuter</p>
             </div>
             <div class="product-card-pricing">
-              <div class="pricing-left">
-                <span class="product-card-price">$1,299.00</span>
-              </div>
-              <div class="pricing-right">
-                <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="review-score">4.9</span>
-              </div>
-            </div>
+                  <div class="pricing-left">
+                    <span class="product-card-price">$1,299.00</span>
+                  </div>
+                  <div class="pricing-right">
+                    <div class="review-wrap">
+                      <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                      <span class="review-score">4.9</span>
+                    </div>
+                  </div>
+                </div>
             <a href="#" class="product-card-btn">SHOP NOW</a>
           </div>
         </div>
@@ -363,16 +385,18 @@
               <p class="product-card-subtitle">750W Front Suspension</p>
             </div>
             <div class="product-card-pricing">
-              <div class="pricing-left">
-                <span class="product-card-price">$1,499.00</span>
-              </div>
-              <div class="pricing-right">
-                <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="review-score">4.8</span>
-              </div>
-            </div>
+                  <div class="pricing-left">
+                    <span class="product-card-price">$1,499.00</span>
+                  </div>
+                  <div class="pricing-right">
+                    <div class="review-wrap">
+                      <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                      <span class="review-score">4.8</span>
+                    </div>
+                  </div>
+                </div>
             <a href="#" class="product-card-btn">SHOP NOW</a>
           </div>
         </div>
@@ -389,17 +413,19 @@
               <p class="product-card-subtitle">High Torque Beast</p>
             </div>
             <div class="product-card-pricing">
-              <div class="pricing-left">
-                <span class="product-card-price">$1,599.00</span>
-                <span class="product-card-compare-price">$1,799.00</span>
-              </div>
-              <div class="pricing-right">
-                <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="review-score">4.9</span>
-              </div>
-            </div>
+                  <div class="pricing-left">
+                    <span class="product-card-price">$1,599.00</span>
+                    <span class="product-card-compare-price">$1,799.00</span>
+                  </div>
+                  <div class="pricing-right">
+                    <div class="review-wrap">
+                      <svg class="review-star" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                      </svg>
+                      <span class="review-score">4.9</span>
+                    </div>
+                  </div>
+                </div>
             <a href="#" class="product-card-btn">SHOP NOW</a>
           </div>
         </div>
