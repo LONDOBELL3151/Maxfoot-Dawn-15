@@ -14,14 +14,14 @@
       "settings": {
         "image_pc": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
         "image_mobile": "shopify://shop_images/Gemini_Generated_Image_1tmnss1tmnss1tmn.webp",
-        "padding_top": 120,
-        "padding_bottom": 120,
         "badge_text": "NEW GENERATION E-BIKE",
         "title": "Unleash the",
         "title_highlight": "RAW",
         "description": "Meet the M-3, a high-torque beast engineered for those who demand uncompromising performance on every terrain.",
         "button_primary_text": "PRE-ORDER NOW",
-        "button_primary_link": "#"
+        "button_primary_link": "#",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "product_grid": {
@@ -32,7 +32,11 @@
           "settings": {
             "product": "mf-25-step-thru-commuter-e-bike-burning-orange",
             "label": "",
-            "title": ""
+            "title": "",
+            "subtitle": "",
+            "banner_text": "",
+            "review_score": "4.9",
+            "button_text": "SHOP NOW"
           }
         },
         "product_2": {
@@ -40,7 +44,11 @@
           "settings": {
             "product": "maxfoot-mf-30-electric-assist-adult-tricycle-750w-front-suspension-grey",
             "label": "",
-            "title": ""
+            "title": "",
+            "subtitle": "",
+            "banner_text": "",
+            "review_score": "4.9",
+            "button_text": "SHOP NOW"
           }
         },
         "product_3": {
@@ -48,7 +56,11 @@
           "settings": {
             "product": "mf-33-passenger-electric-tricycle-yellow",
             "label": "",
-            "title": ""
+            "title": "",
+            "subtitle": "",
+            "banner_text": "",
+            "review_score": "4.9",
+            "button_text": "SHOP NOW"
           }
         },
         "product_4": {
@@ -56,7 +68,11 @@
           "settings": {
             "product": "maxz-20-fat-tire-step-thru-electric-trike-maxfoot-mf-31-pangea-green",
             "label": "",
-            "title": ""
+            "title": "",
+            "subtitle": "",
+            "banner_text": "",
+            "review_score": "4.9",
+            "button_text": "SHOP NOW"
           }
         },
         "product_5": {
@@ -64,7 +80,11 @@
           "settings": {
             "product": "maxz-24-fat-tire-step-thru-electric-trike-maxfoot-mf-32-picton-blue",
             "label": "",
-            "title": ""
+            "title": "",
+            "subtitle": "",
+            "banner_text": "",
+            "review_score": "4.9",
+            "button_text": "SHOP NOW"
           }
         }
       },
@@ -79,8 +99,8 @@
         "title": "HOT SELLING",
         "view_all_text": "VIEW ALL PRODUCTS",
         "view_all_link": "",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding_top": 60,
+        "padding_bottom": 0
       }
     },
     "bento_grid": {
@@ -124,8 +144,8 @@
       ],
       "settings": {
         "title": "MULTI-DIMENSIONAL PERFORMANCE",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding_top": 60,
+        "padding_bottom": 0
       }
     },
     "customer_reviews": {
