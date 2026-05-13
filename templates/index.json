@@ -77,13 +77,6 @@
         "padding_bottom": 120
       }
     },
-    "tech_specs": {
-      "type": "maxfoot-tech-specs",
-      "settings": {
-        "padding_top": 120,
-        "padding_bottom": 120
-      }
-    },
     "bento_grid": {
       "type": "maxfoot-bento-grid",
       "blocks": {
@@ -229,7 +222,6 @@
   "order": [
     "hero_banner",
     "product_grid",
-    "tech_specs",
     "bento_grid",
     "customer_reviews",
     "blog_display"
