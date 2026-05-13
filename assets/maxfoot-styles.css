@@ -133,15 +133,20 @@ body {
    SECTION SPACING
    ============================================ */
 .section {
-  padding-top: 80px;
-  padding-bottom: 80px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 @media screen and (min-width: 750px) {
   .section {
-    padding-top: 120px;
-    padding-bottom: 120px;
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
+}
+
+.hero-section {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 /* ============================================
