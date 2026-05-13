@@ -254,6 +254,26 @@
       gap: 20px;
     }
 
+    /* Horizontal scroll mode */
+    .product-grid--scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 16px;
+      padding-bottom: 16px;
+    }
+
+    .product-grid--scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .product-grid--scroll .product-card {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+    }
+
     .product-grid-header {
       flex-direction: column;
       align-items: flex-start;
@@ -290,7 +310,7 @@
     </div>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="product-grid">
+      <div class="product-grid{% if section.settings.mobile_scroll %} product-grid--scroll{% endif %}">
         {%- for block in section.blocks -%}
           {%- if block.type == 'product' -%}
             {%- assign product = all_products[block.settings.product] -%}
@@ -342,7 +362,7 @@
         {%- endfor -%}
       </div>
     {%- else -%}
-      <div class="product-grid">
+      <div class="product-grid{% if section.settings.mobile_scroll %} product-grid--scroll{% endif %}">
         <div class="product-card">
           <div class="product-card-media">
             <span class="product-card-label">HOT</span>
@@ -456,6 +476,13 @@
       "type": "url",
       "id": "view_all_link",
       "label": "View All Link"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_scroll",
+      "label": "Mobile Horizontal Scroll",
+      "info": "Enable to show products in a horizontal scrollable row on mobile",
+      "default": false
     },
     {
       "type": "header",
