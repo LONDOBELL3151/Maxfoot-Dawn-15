@@ -15,7 +15,13 @@
         "image_pc": "shopify://shop_images/Gemini_Generated_Image_n2n7mun2n7mun2n7_2.webp",
         "image_mobile": "shopify://shop_images/Gemini_Generated_Image_1tmnss1tmnss1tmn.webp",
         "padding_top": 120,
-        "padding_bottom": 120
+        "padding_bottom": 120,
+        "badge_text": "NEW GENERATION E-BIKE",
+        "title": "Unleash the",
+        "title_highlight": "RAW",
+        "description": "Meet the M-3, a high-torque beast engineered for those who demand uncompromising performance on every terrain.",
+        "button_primary_text": "PRE-ORDER NOW",
+        "button_primary_link": "#"
       }
     },
     "product_grid": {
