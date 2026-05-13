@@ -26,7 +26,7 @@
         "product_1": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "mf-25-step-thru-commuter-e-bike-burning-orange",
             "label": "",
             "title": ""
           }
@@ -34,7 +34,7 @@
         "product_2": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "maxfoot-mf-30-electric-assist-adult-tricycle-750w-front-suspension-grey",
             "label": "",
             "title": ""
           }
@@ -42,7 +42,7 @@
         "product_3": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "mf-33-passenger-electric-tricycle-yellow",
             "label": "",
             "title": ""
           }
@@ -50,7 +50,7 @@
         "product_4": {
           "type": "product",
           "settings": {
-            "product": "",
+            "product": "maxz-20-fat-tire-step-thru-electric-trike-maxfoot-mf-31-pangea-green",
             "label": "",
             "title": ""
           }
@@ -58,15 +58,7 @@
         "product_5": {
           "type": "product",
           "settings": {
-            "product": "",
-            "label": "",
-            "title": ""
-          }
-        },
-        "product_6": {
-          "type": "product",
-          "settings": {
-            "product": "",
+            "product": "maxz-24-fat-tire-step-thru-electric-trike-maxfoot-mf-32-picton-blue",
             "label": "",
             "title": ""
           }
@@ -77,8 +69,7 @@
         "product_2",
         "product_3",
         "product_4",
-        "product_5",
-        "product_6"
+        "product_5"
       ],
       "settings": {
         "title": "HOT SELLING",
