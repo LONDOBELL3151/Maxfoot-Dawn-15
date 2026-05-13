@@ -3,16 +3,55 @@
 {%- style -%}
   .hero-section {
     position: relative;
-    background-color: #FFFFFF;
     width: 100%;
     min-height: 870px;
     display: flex;
     align-items: center;
+    background-color: #FFFFFF;
+    overflow: hidden;
+  }
+
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .hero-placeholder-bg {
+    width: 100%;
+    height: 100%;
+    background-color: #F5F5F5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-placeholder-bg span {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.2em;
+    color: #9ca3af;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.3) 100%);
+    z-index: 2;
   }
 
   .hero-container {
+    position: relative;
+    z-index: 10;
     width: 100%;
-    max-width: none;
+    max-width: 1440px;
+    margin: 0 auto;
     padding: 0 32px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -22,7 +61,6 @@
 
   .hero-content {
     grid-column: span 6;
-    z-index: 10;
     padding: 48px 0;
   }
 
@@ -70,7 +108,12 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-    sm-flex-direction: row;
+  }
+
+  @media screen and (min-width: 640px) {
+    .hero-buttons {
+      flex-direction: row;
+    }
   }
 
   .hero-btn-primary {
@@ -117,49 +160,8 @@
     color: #FFFFFF;
   }
 
-  .hero-media {
-    grid-column: span 6;
-    position: relative;
-    height: 700px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transform: scale(1.1);
-  }
-
-  .hero-placeholder {
-    width: 100%;
-    height: 100%;
-    background-color: #f3f3f4;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .hero-placeholder span {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 14px;
-    letter-spacing: 0.2em;
-    color: #9ca3af;
-  }
-
-  .hero-decorative {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: radial-gradient(from #f5f5f5 to transparent, circle);
-    opacity: 0.5;
-    border-radius: 50%;
-    z-index: -1;
+  .hero-spacer {
+    grid-column: span 1;
   }
 
   /* Mobile Responsive */
@@ -167,6 +169,7 @@
     .hero-container {
       grid-template-columns: 1fr;
       gap: 32px;
+      padding: 0 24px;
     }
 
     .hero-content {
@@ -175,27 +178,20 @@
       order: 2;
     }
 
-    .hero-media {
-      grid-column: span 1;
-      height: 400px;
-      order: 1;
+    .hero-spacer {
+      display: none;
     }
 
-    .hero-buttons {
-      flex-direction: row;
-      flex-wrap: wrap;
+    .hero-overlay {
+      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
+    }
+
+    .hero-section {
+      min-height: auto;
     }
   }
 
   @media screen and (max-width: 749px) {
-    .hero-section {
-      min-height: auto;
-    }
-
-    .hero-container {
-      padding: 0 24px;
-    }
-
     .hero-content {
       padding: 32px 0 0 0;
     }
@@ -211,10 +207,29 @@
       padding: 14px 24px;
       font-size: 14px;
     }
+
+    .hero-section {
+      min-height: auto;
+    }
   }
 {%- endstyle -%}
 
 <section class="hero-section">
+  <div class="hero-media">
+    {%- if section.settings.image_pc != blank -%}
+      <img
+        src="{{ section.settings.image_pc | image_url: width: 1920 }}"
+        alt="{{ section.settings.image_pc.alt | escape }}"
+        class="hero-image"
+        loading="eager"
+      >
+    {%- else -%}
+      <div class="hero-placeholder-bg">
+        <span>UPLOAD HERO IMAGE</span>
+      </div>
+    {%- endif -%}
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-container">
     <div class="hero-content">
       <div class="hero-badge">
@@ -243,21 +258,7 @@
         {%- endif -%}
       </div>
     </div>
-    <div class="hero-media">
-      <div class="hero-decorative"></div>
-      {%- if section.settings.image_pc != blank -%}
-        <img
-          src="{{ section.settings.image_pc | image_url: width: 800 }}"
-          alt="{{ section.settings.image_pc.alt | escape }}"
-          class="hero-image"
-          loading="eager"
-        >
-      {%- else -%}
-        <div class="hero-placeholder">
-          <span>UPLOAD HERO IMAGE</span>
-        </div>
-      {%- endif -%}
-    </div>
+    <div class="hero-spacer"></div>
   </div>
 </section>
 
@@ -271,7 +272,7 @@
       "type": "image_picker",
       "id": "image_pc",
       "label": "Hero Image (PC)",
-      "info": "Recommended size: 800x700px"
+      "info": "Recommended size: 1920x870px"
     },
     {
       "type": "image_picker",
