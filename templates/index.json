@@ -100,8 +100,8 @@
         "view_all_text": "VIEW ALL PRODUCTS",
         "view_all_link": "",
         "mobile_scroll": true,
-        "padding_top": 120,
-        "padding_bottom": 120
+        "padding_top": 60,
+        "padding_bottom": 0
       }
     },
     "bento_grid": {
@@ -110,6 +110,7 @@
         "conquer_peak": {
           "type": "conquer_peak",
           "settings": {
+            "image": "shopify://shop_images/d1e7570f6209df318bdd3fa948570378.jpg",
             "title": "Conquer Any Peak",
             "button_text": "EXPLORE ADVENTURE",
             "button_link": ""
@@ -127,12 +128,14 @@
         "precision": {
           "type": "precision",
           "settings": {
+            "image": "shopify://shop_images/Gemini_Generated_Image_uqoh18uqoh18uqoh_621cade7-14f8-4960-9b9c-93866a183ca0.png",
             "title": "Precision"
           }
         },
         "seamless_city": {
           "type": "seamless_city",
           "settings": {
+            "image": "shopify://shop_images/mf25-pc-banner.webp",
             "title": "Seamless City Flow"
           }
         }
