@@ -119,6 +119,32 @@
     text-overflow: ellipsis;
   }
 
+  .reviews-footer {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .reviews-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FFC426;
+    color: #785a00;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .reviews-btn:hover {
+    opacity: 0.9;
+  }
+
   /* Responsive */
   @media screen and (max-width: 989px) {
     .reviews-grid {
@@ -212,6 +238,11 @@
           {%- endif -%}
         {%- endfor -%}
       </div>
+      {%- if section.settings.button_text != blank -%}
+        <div class="reviews-footer">
+          <a href="{{ section.settings.button_link }}" class="reviews-btn">{{ section.settings.button_text }}</a>
+        </div>
+      {%- endif -%}
     {%- else -%}
       <div class="reviews-grid">
         <div class="review-card">
@@ -282,6 +313,9 @@
           <p class="review-text">"Customer support helped me with all my technical questions. Very impressed."</p>
         </div>
       </div>
+      <div class="reviews-footer">
+        <a href="{{ section.settings.button_link | default: '#' }}" class="reviews-btn">{{ section.settings.button_text | default: 'VIEW ALL REVIEWS' }}</a>
+      </div>
     {%- endif -%}
   </div>
 </section>
@@ -310,6 +344,17 @@
       "label": "Mobile Horizontal Scroll",
       "info": "Enable to show reviews in a horizontal scrollable row on mobile",
       "default": false
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "VIEW ALL REVIEWS"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
     },
     {
       "type": "header",
