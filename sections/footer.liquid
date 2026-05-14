@@ -28,9 +28,12 @@
       </div>
 
       <!-- Support Column -->
-      <div class="footer-block footer-block--menu" style="text-align: left;">
-        <h2 class="footer-block__heading" style="color: #FFFFFF;">SUPPORT</h2>
-        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+      <div class="footer-block footer-block--menu footer-accordion" style="text-align: left;">
+        <button class="footer-accordion__header" onclick="toggleAccordion(this)" style="background: none; border: none; cursor: pointer; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0; margin-bottom: 0;">
+          <h2 class="footer-block__heading" style="color: #FFFFFF; margin: 0;">SUPPORT</h2>
+          <span class="footer-accordion__icon" style="color: #FFC426; font-size: 12px; transition: transform 0.3s ease;">▼</span>
+        </button>
+        <ul class="footer-accordion__content" style="list-style: none; padding: 0; margin: 1.5rem 0 0 0; text-align: left; display: none;">
           {%- for link in linklists[section.settings.menu].links -%}
             <li style="margin-bottom: 0.75rem; text-align: left;">
               <a href="{{ link.url }}" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; transition: color 0.2s ease; display: inline; text-align: left;"
@@ -43,9 +46,12 @@
       </div>
 
       <!-- Company Column -->
-      <div class="footer-block footer-block--menu" style="text-align: left;">
-        <h2 class="footer-block__heading" style="color: #FFFFFF;">COMPANY</h2>
-        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+      <div class="footer-block footer-block--menu footer-accordion" style="text-align: left;">
+        <button class="footer-accordion__header" onclick="toggleAccordion(this)" style="background: none; border: none; cursor: pointer; width: 100%; display: flex; justify-content: space-between; align-items: center; padding: 0; margin-bottom: 0;">
+          <h2 class="footer-block__heading" style="color: #FFFFFF; margin: 0;">COMPANY</h2>
+          <span class="footer-accordion__icon" style="color: #FFC426; font-size: 12px; transition: transform 0.3s ease;">▼</span>
+        </button>
+        <ul class="footer-accordion__content" style="list-style: none; padding: 0; margin: 1.5rem 0 0 0; text-align: left; display: none;">
           <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">About Us</a></li>
           <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">Careers</a></li>
           <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">Press</a></li>
@@ -85,6 +91,22 @@
     </div>
   </div>
 </footer>
+
+<script>
+function toggleAccordion(el) {
+  const content = el.nextElementSibling;
+  const icon = el.querySelector('.footer-accordion__icon');
+  if (content.classList.contains('active')) {
+    content.classList.remove('active');
+    content.style.display = 'none';
+    icon.style.transform = 'rotate(0deg)';
+  } else {
+    content.classList.add('active');
+    content.style.display = 'block';
+    icon.style.transform = 'rotate(180deg)';
+  }
+}
+</script>
 
 {% schema %}
 {
