@@ -159,6 +159,13 @@
   text-transform: uppercase;
 }
 
+.footer-block__newsletter-text {
+  font-family: 'Lexend', sans-serif;
+  font-size: 1rem;
+  color: #9ca3af;
+  margin: 0 0 1.5rem 0;
+}
+
 @media screen and (min-width: 990px) {
   .footer-block__heading {
     font-size: 1rem;

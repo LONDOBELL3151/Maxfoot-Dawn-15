@@ -2794,7 +2794,7 @@ details[open] > .header__submenu {
 .header__menu-item {
   padding: 1.2rem;
   text-decoration: none;
-  color: rgba(var(--color-foreground), 0.85);
+  color: rgba(26, 28, 28, 0.85);
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9375rem;
   font-weight: 600;
@@ -2803,7 +2803,7 @@ details[open] > .header__submenu {
 }
 
 .header__menu-item:hover {
-  color: rgb(var(--color-foreground));
+  color: #1A1C1C;
 }
 
 .header__menu-item span {
