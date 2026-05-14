@@ -7,21 +7,21 @@
     <div class="footer__content-top" style="padding: 6rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 3rem;">
       <!-- Brand Column -->
       <div class="footer-block footer-block--brand">
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.15em; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1rem 0;">MAXFOOT</h2>
-        <p style="color: #9ca3af; font-family: 'Lexend', sans-serif; font-size: 0.875rem; line-height: 1.7; max-width: 280px; margin: 0;">
+        <h2 class="footer-block__brand-title">MAXFOOT</h2>
+        <p class="footer-block__brand-text">
           Pioneering the future of electric mobility with high-performance bikes designed for the modern adventurer.
         </p>
-        <div style="display: flex; gap: 1rem; margin-top: 1.5rem;">
-          <a href="#" aria-label="Instagram" style="color: #FFC426;">
+        <div class="footer-block__social">
+          <a href="#" aria-label="Instagram">
             <span class="svg-wrapper">{{ 'icon-instagram.svg' | inline_asset_content }}</span>
           </a>
-          <a href="#" aria-label="Facebook" style="color: #FFC426;">
+          <a href="#" aria-label="Facebook">
             <span class="svg-wrapper">{{ 'icon-facebook.svg' | inline_asset_content }}</span>
           </a>
-          <a href="#" aria-label="YouTube" style="color: #FFC426;">
+          <a href="#" aria-label="YouTube">
             <span class="svg-wrapper">{{ 'icon-youtube.svg' | inline_asset_content }}</span>
           </a>
-          <a href="#" aria-label="TikTok" style="color: #FFC426;">
+          <a href="#" aria-label="TikTok">
             <span class="svg-wrapper">{{ 'icon-tiktok.svg' | inline_asset_content }}</span>
           </a>
         </div>
@@ -55,25 +55,24 @@
 
       <!-- Newsletter Column -->
       <div class="footer-block footer-block--newsletter">
-        <h2 class="footer-block__heading" style="color: #FFFFFF;">NEWSLETTER</h2>
+        <h2 class="footer-block__heading">NEWSLETTER</h2>
         <p class="footer-block__newsletter-text">Stay updated with the latest models and exclusive offers.</p>
         {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
-          <div style="display: flex; border-bottom: 1px solid #4b5563; padding-bottom: 0.75rem; gap: 0.5rem;">
+          <div class="footer-newsletter__form-row">
             <input
               id="NewsletterForm--{{ section.id }}"
               type="email"
               name="contact[email]"
-              class="field__input newsletter-input"
+              class="footer-newsletter__input"
               placeholder="YOUR EMAIL"
               required
             >
             <button
               type="submit"
-              class="newsletter-form__button field__button"
+              class="footer-newsletter__button"
               name="commit"
               aria-label="Subscribe"
-              style="background: transparent; border: none; color: #FFC426; cursor: pointer; padding: 0;"
             >
               <span class="svg-wrapper">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
             </button>

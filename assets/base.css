@@ -2891,6 +2891,14 @@ details[open] > .header__menu-item .icon-caret {
 
 .header__menu-item .icon-caret {
   right: 0.8rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.header__menu-item {
+  position: relative;
 }
 
 .header__submenu .icon-caret {
