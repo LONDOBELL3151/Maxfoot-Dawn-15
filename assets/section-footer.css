@@ -160,6 +160,11 @@
   align-items: start !important;
 }
 
+.footer__content-top.footer-grid .footer-block {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
 .footer__content-top .footer-block {
   text-align: left !important;
 }
@@ -225,13 +230,14 @@
     text-align: left;
   }
 
-  .footer__content-top {
-    grid-template-columns: 1fr !important;
+  .footer__content-top.footer-grid {
+    display: flex !important;
+    flex-direction: column !important;
     gap: 2rem !important;
     padding: 3rem 0 !important;
   }
 
-  .footer__content-top .footer-block {
+  .footer__content-top.footer-grid .footer-block {
     width: 100% !important;
   }
 
