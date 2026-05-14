@@ -29,11 +29,11 @@
 
       <!-- Support Column -->
       <div class="footer-block footer-block--menu">
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem !important; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1.5rem 0;">SUPPORT</h2>
+        <h2 class="footer-block__heading" style="color: #FFFFFF;">SUPPORT</h2>
         <ul style="list-style: none; padding: 0; margin: 0;">
           {%- for link in linklists[section.settings.menu].links -%}
             <li style="margin-bottom: 0.75rem;">
-              <a href="{{ link.url }}" style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; text-decoration: none; transition: color 0.2s ease;"
+              <a href="{{ link.url }}" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; transition: color 0.2s ease;"
                  onmouseover="this.style.color='#FFC426'" onmouseout="this.style.color='#9ca3af'">
                 {{ link.title | escape }}
               </a>
@@ -44,18 +44,18 @@
 
       <!-- Company Column -->
       <div class="footer-block footer-block--menu">
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem !important; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1.5rem 0;">COMPANY</h2>
+        <h2 class="footer-block__heading" style="color: #FFFFFF;">COMPANY</h2>
         <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: 0.75rem;"><a href="#" style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; text-decoration: none;">About Us</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; text-decoration: none;">Careers</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; text-decoration: none;">Press</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; text-decoration: none;">Sustainability</a></li>
+          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">About Us</a></li>
+          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Careers</a></li>
+          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Press</a></li>
+          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Sustainability</a></li>
         </ul>
       </div>
 
       <!-- Newsletter Column -->
       <div class="footer-block footer-block--newsletter">
-        <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 1rem !important; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #FFFFFF; margin: 0 0 1.5rem 0;">NEWSLETTER</h2>
+        <h2 class="footer-block__heading" style="color: #FFFFFF;">NEWSLETTER</h2>
         <p style="font-family: 'Lexend', sans-serif; font-size: 1rem !important; color: #9ca3af; margin: 0 0 1.5rem 0;">Stay updated with the latest models and exclusive offers.</p>
         {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
           <input type="hidden" name="contact[tags]" value="newsletter">
@@ -84,14 +84,14 @@
     </div>
 
     <!-- Footer Bottom -->
-    <div style="border-top: 1px solid #374151; padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-      <div style="color: #6b7280; font-family: 'Space Grotesk', sans-serif; font-size: 0.9375rem !important; letter-spacing: 0.06em;">
+    <div class="footer__content-bottom" style="border-top: 1px solid #374151; padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <div class="copyright__content" style="color: #6b7280;">
         &copy; {{ 'now' | date: '%Y' }} MAXFOOT ELECTRIC BIKES. ENGINEERED FOR ADVENTURE.
       </div>
       <div style="display: flex; gap: 2rem;">
-        <a href="#" style="color: #6b7280; font-family: 'Space Grotesk', sans-serif; font-size: 0.9375rem !important; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none;">PRIVACY</a>
-        <a href="#" style="color: #6b7280; font-family: 'Space Grotesk', sans-serif; font-size: 0.9375rem !important; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none;">WARRANTY</a>
-        <a href="#" style="color: #6b7280; font-family: 'Space Grotesk', sans-serif; font-size: 0.9375rem !important; text-transform: uppercase; letter-spacing: 0.06em; text-decoration: none;">TERMS</a>
+        <a href="#" class="copyright__content" style="color: #6b7280; text-decoration: none;">PRIVACY</a>
+        <a href="#" class="copyright__content" style="color: #6b7280; text-decoration: none;">WARRANTY</a>
+        <a href="#" class="copyright__content" style="color: #6b7280; text-decoration: none;">TERMS</a>
       </div>
     </div>
   </div>
