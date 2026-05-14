@@ -2792,14 +2792,28 @@ details[open] > .header__submenu {
 }
 
 .header__menu-item {
-  padding: 1.2rem;
+  padding: 1.2rem !important;
   text-decoration: none !important;
   color: rgba(26, 28, 28, 0.85) !important;
-  font-family: 'Space Grotesk', 'Arial', sans-serif !important;
-  font-size: 1.125rem !important;
+  font-family: 'Space Grotesk', Arial, sans-serif !important;
+  font-size: 16px !important;
   font-weight: 600 !important;
   text-transform: uppercase !important;
-  letter-spacing: 0.05em !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1 !important;
+}
+
+.header__inline-menu .header__menu-item {
+  font-size: 16px !important;
+}
+
+nav.header__inline-menu ul.list-menu li a.header__menu-item,
+nav.header__inline-menu ul.list-menu li summary.header__menu-item {
+  font-size: 16px !important;
+}
+
+.header__inline-menu .list-menu--inline .header__menu-item {
+  font-size: 16px !important;
 }
 
 .header__menu-item:hover {
