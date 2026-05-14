@@ -138,6 +138,25 @@
       gap: 20px;
     }
 
+    .reviews-grid--scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      gap: 16px;
+      padding-bottom: 16px;
+    }
+
+    .reviews-grid--scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .reviews-grid--scroll .review-card {
+      flex: 0 0 280px;
+      scroll-snap-align: start;
+    }
+
     .reviews-section {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
@@ -165,7 +184,7 @@
     </div>
 
     {%- if section.blocks.size > 0 -%}
-      <div class="reviews-grid">
+      <div class="reviews-grid{% if section.settings.mobile_scroll %} reviews-grid--scroll{% endif %}">
         {%- for block in section.blocks -%}
           {%- if block.type == 'review' -%}
             <div class="review-card" {{ block.shopify_attributes }}>
@@ -284,6 +303,13 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "4.9/5 based on 1,200+ reviews"
+    },
+    {
+      "type": "checkbox",
+      "id": "mobile_scroll",
+      "label": "Mobile Horizontal Scroll",
+      "info": "Enable to show reviews in a horizontal scrollable row on mobile",
+      "default": false
     },
     {
       "type": "header",
