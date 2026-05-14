@@ -57,27 +57,22 @@
       <div class="footer-block footer-block--newsletter">
         <h2 class="footer-block__heading">NEWSLETTER</h2>
         <p class="footer-block__newsletter-text">Stay updated with the latest models and exclusive offers.</p>
-        {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter newsletter-form' -%}
-          <input type="hidden" name="contact[tags]" value="newsletter">
-          <div class="footer-newsletter__form-row">
-            <input
-              id="NewsletterForm--{{ section.id }}"
-              type="email"
-              name="contact[email]"
-              class="footer-newsletter__input"
-              placeholder="YOUR EMAIL"
-              required
-            >
-            <button
-              type="submit"
-              class="footer-newsletter__button"
-              name="commit"
-              aria-label="Subscribe"
-            >
-              <span class="svg-wrapper">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
-            </button>
-          </div>
-        {%- endform -%}
+        <div style="display:flex;align-items:center;border-bottom:1px solid #4b5563;padding-bottom:0.75rem;gap:0.5rem;max-width:280px;">
+          <input
+            id="NewsletterForm--{{ section.id }}"
+            type="email"
+            name="contact[email]"
+            placeholder="YOUR EMAIL"
+            required
+            style="background:transparent;border:none;color:#ffffff;font-family:'Lexend',sans-serif;font-size:14px;flex:1;outline:none;padding:0;"
+          >
+          <button
+            type="submit"
+            style="background:transparent;border:none;color:#FFC426;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;"
+          >
+            <span style="width:20px;height:20px;display:flex;">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          </button>
+        </div>
       </div>
     </div>
 
