@@ -60,17 +60,24 @@
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    background-color: #E5E5E5;
+    background-color: #FFC426;
     margin: 0 auto 24px;
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: hidden;
+  }
+
+  .review-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .review-avatar svg {
     width: 32px;
     height: 32px;
-    color: #9ca3af;
+    color: #785a00;
   }
 
   .review-name {
@@ -105,6 +112,11 @@
     color: #6B7280;
     font-style: italic;
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* Responsive */
@@ -158,9 +170,13 @@
           {%- if block.type == 'review' -%}
             <div class="review-card" {{ block.shopify_attributes }}>
               <div class="review-avatar">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
+                {%- if block.settings.avatar != blank -%}
+                  <img src="{{ block.settings.avatar | image_url: width: 128 }}" alt="{{ block.settings.name | escape }}">
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                  </svg>
+                {%- endif -%}
               </div>
               <h4 class="review-name">{{ block.settings.name }}</h4>
               <div class="review-stars">
@@ -299,6 +315,7 @@
       "type": "review",
       "name": "Review",
       "settings": [
+        { "type": "image_picker", "id": "avatar", "label": "Avatar Image" },
         { "type": "text", "id": "name", "label": "Customer Name", "default": "Customer Name" },
         { "type": "range", "id": "rating", "label": "Rating", "min": 1, "max": 5, "step": 1, "default": 5 },
         { "type": "textarea", "id": "text", "label": "Review Text" }
