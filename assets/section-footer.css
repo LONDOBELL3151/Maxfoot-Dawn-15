@@ -152,18 +152,44 @@
 .footer-block__heading {
   margin-bottom: 2rem;
   margin-top: 0;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-family: 'Space Grotesk', 'Arial', sans-serif !important;
+  font-size: 1.125rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+  color: #FFFFFF !important;
 }
 
 .footer-block__newsletter-text {
-  font-family: 'Lexend', sans-serif;
-  font-size: 1rem;
-  color: #9ca3af;
-  margin: 0 0 1.5rem 0;
+  font-family: 'Lexend', 'Arial', sans-serif !important;
+  font-size: 1.0625rem !important;
+  color: #9ca3af !important;
+  margin: 0 0 1.5rem 0 !important;
+}
+
+.newsletter-input {
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-family: 'Lexend', 'Arial', sans-serif !important;
+  font-size: 1rem !important;
+  flex: 1;
+  outline: none;
+}
+
+.footer-block__details-content .list-menu__item--link {
+  font-family: 'Lexend', 'Arial', sans-serif !important;
+  font-size: 1.0625rem !important;
+  color: #9ca3af !important;
+}
+
+@media screen and (min-width: 750px) {
+  .footer-block__details-content .list-menu__item--link {
+    display: inline-block;
+    font-family: 'Lexend', 'Arial', sans-serif !important;
+    font-size: 1.0625rem !important;
+    color: #9ca3af !important;
+  }
 }
 
 @media screen and (min-width: 990px) {
@@ -455,18 +481,18 @@
 }
 
 .copyright__content {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9375rem;
-  letter-spacing: 0.06em;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.06em !important;
 }
 
 .copyright__content a {
   color: currentColor;
   text-decoration: none;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.9375rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-family: 'Space Grotesk', sans-serif !important;
+  font-size: 1rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
 }
 
 .policies {
