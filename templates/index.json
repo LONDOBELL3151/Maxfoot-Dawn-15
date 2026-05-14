@@ -233,7 +233,7 @@
           "settings": {
             "article": "news/2026-adult-electric-tricycle-buyers-guide-a-comprehensive-analysis-from-technological-innovation-to-scenario-adaptation",
             "label": "Guide",
-            "title": "2026 Adult Electric Tricycle Buyer's Guide",
+            "title": "",
             "date": "",
             "excerpt": ""
           }
@@ -248,6 +248,7 @@
         "title": "Latest Stories",
         "view_all_text": "ALL STORIES",
         "view_all_link": "",
+        "mobile_scroll": false,
         "padding_top": 120,
         "padding_bottom": 120
       }
