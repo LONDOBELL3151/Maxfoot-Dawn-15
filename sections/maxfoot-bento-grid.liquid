@@ -329,8 +329,12 @@
                 <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.image.alt | escape }}" class="bento-card-image" loading="lazy">
               {%- endif -%}
               <div class="bento-card-content">
-                <span class="bento-card-tag">PRECISION</span>
-                <h3 class="bento-card-title">{{ block.settings.title | default: 'Precision' }}</h3>
+                {%- if block.settings.tag != blank -%}
+                  <span class="bento-card-tag">{{ block.settings.tag }}</span>
+                {%- endif -%}
+                {%- if block.settings.title != blank -%}
+                  <h3 class="bento-card-title">{{ block.settings.title }}</h3>
+                {%- endif -%}
               </div>
             </div>
 
@@ -447,6 +451,7 @@
       "name": "Precision",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "tag", "label": "Tag", "default": "PRECISION" },
         { "type": "text", "id": "title", "label": "Title", "default": "Precision" }
       ]
     },
