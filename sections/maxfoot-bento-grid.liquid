@@ -276,6 +276,40 @@
       min-height: 300px;
     }
 
+    .bento-card--large .bento-card-content {
+      margin: 20px;
+      padding: 16px 20px;
+      width: auto;
+      display: block;
+      bottom: auto;
+      left: auto;
+    }
+
+    .bento-card--small {
+      display: block;
+    }
+
+    .bento-card--small .bento-card-content {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      bottom: auto;
+      margin: 0;
+      z-index: 2;
+    }
+
+    .bento-card--wide {
+      display: block;
+    }
+
+    .bento-card--wide .bento-card-content {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      z-index: 2;
+      margin: 0;
+    }
+
     .bento-section {
       padding-top: {{ section.settings.padding_top }}px;
       padding-bottom: {{ section.settings.padding_bottom }}px;
