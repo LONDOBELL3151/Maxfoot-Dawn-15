@@ -146,14 +146,23 @@
   max-width: 350px !important;
 }
 
-.newsletter-form-inner {
-  display: flex !important;
-  align-items: center !important;
-  border-bottom: 1px solid #4b5563 !important;
-  padding-bottom: 0.75rem !important;
-  gap: 0.5rem !important;
-  width: 100% !important;
-  max-width: 280px !important;
+.footer__content-top.grid-4-col {
+  display: grid !important;
+  grid-template-columns: repeat(4, 1fr) !important;
+  gap: 3rem !important;
+  align-items: start !important;
+}
+
+.footer__content-top .footer-block {
+  text-align: left !important;
+}
+
+.footer__content-top .footer-block .footer-block__heading,
+.footer__content-top .footer-block h2,
+.footer__content-top .footer-block p,
+.footer__content-top .footer-block ul,
+.footer__content-top .footer-block li {
+  text-align: left !important;
 }
 
 .newsletter-form-inner {
@@ -163,7 +172,7 @@
   padding-bottom: 0.75rem !important;
   gap: 0.5rem !important;
   width: 100% !important;
-  max-width: 280px !important;
+  max-width: none !important;
 }
 
 .newsletter-form-inner input {

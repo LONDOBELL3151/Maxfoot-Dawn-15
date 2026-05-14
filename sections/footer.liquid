@@ -4,9 +4,9 @@
 <footer class="footer color-scheme-3" style="background-color: #1A1C1C; margin-top: 0;">
   <div class="page-width" style="max-width: 1440px; margin: 0 auto; padding: 0 3.2rem;">
     <!-- Footer Top -->
-    <div class="footer__content-top" style="padding: 6rem 0; display: flex; flex-wrap: wrap; gap: 3rem;">
+    <div class="footer__content-top" style="padding: 6rem 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 3rem; align-items: start;">
       <!-- Brand Column -->
-      <div class="footer-block footer-block--brand footer-block--auto">
+      <div class="footer-block footer-block--brand" style="text-align: left;">
         <h2 class="footer-block__brand-title">MAXFOOT</h2>
         <p class="footer-block__brand-text">
           Pioneering the future of electric mobility with high-performance bikes designed for the modern adventurer.
@@ -28,12 +28,12 @@
       </div>
 
       <!-- Support Column -->
-      <div class="footer-block footer-block--menu footer-block--auto">
+      <div class="footer-block footer-block--menu" style="text-align: left;">
         <h2 class="footer-block__heading" style="color: #FFFFFF;">SUPPORT</h2>
-        <ul style="list-style: none; padding: 0; margin: 0;">
+        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
           {%- for link in linklists[section.settings.menu].links -%}
-            <li style="margin-bottom: 0.75rem;">
-              <a href="{{ link.url }}" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; transition: color 0.2s ease;"
+            <li style="margin-bottom: 0.75rem; text-align: left;">
+              <a href="{{ link.url }}" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; transition: color 0.2s ease; display: inline; text-align: left;"
                  onmouseover="this.style.color='#FFC426'" onmouseout="this.style.color='#9ca3af'">
                 {{ link.title | escape }}
               </a>
@@ -43,18 +43,18 @@
       </div>
 
       <!-- Company Column -->
-      <div class="footer-block footer-block--menu footer-block--auto">
+      <div class="footer-block footer-block--menu" style="text-align: left;">
         <h2 class="footer-block__heading" style="color: #FFFFFF;">COMPANY</h2>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">About Us</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Careers</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Press</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Sustainability</a></li>
+        <ul style="list-style: none; padding: 0; margin: 0; text-align: left;">
+          <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">About Us</a></li>
+          <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">Careers</a></li>
+          <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">Press</a></li>
+          <li style="margin-bottom: 0.75rem; text-align: left;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none; display: inline;">Sustainability</a></li>
         </ul>
       </div>
 
-      <!-- Newsletter Column - takes remaining space -->
-      <div class="footer-block footer-block--newsletter footer-block--newsletter-last">
+      <!-- Newsletter Column -->
+      <div class="footer-block footer-block--newsletter" style="text-align: left;">
         <h2 class="footer-block__heading">NEWSLETTER</h2>
         <p class="footer-block__newsletter-text">Stay updated with the latest models and exclusive offers.</p>
         <div class="newsletter-form-inner">
