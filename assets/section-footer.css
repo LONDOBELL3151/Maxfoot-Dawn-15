@@ -134,10 +134,26 @@
   flex: 1 1 auto;
 }
 
+.footer-block--auto {
+  flex: 0 1 auto !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
 .footer-block--newsletter-last {
-  flex: 1 1 auto;
-  min-width: 200px;
-  max-width: 350px;
+  flex: 1 1 auto !important;
+  min-width: 250px !important;
+  max-width: 350px !important;
+}
+
+.newsletter-form-inner {
+  display: flex !important;
+  align-items: center !important;
+  border-bottom: 1px solid #4b5563 !important;
+  padding-bottom: 0.75rem !important;
+  gap: 0.5rem !important;
+  width: 100% !important;
+  max-width: 280px !important;
 }
 
 .newsletter-form-inner {
