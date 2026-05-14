@@ -198,8 +198,11 @@
       "settings": {
         "title": "Rider Experiences",
         "subtitle": "4.9/5 based on 1,200+ reviews",
-        "padding_top": 120,
-        "padding_bottom": 120
+        "mobile_scroll": true,
+        "button_text": "VIEW ALL REVIEWS",
+        "button_link": "",
+        "padding_top": 60,
+        "padding_bottom": 20
       }
     },
     "blog_display": {
@@ -208,8 +211,8 @@
         "post_1": {
           "type": "post",
           "settings": {
-            "article": "",
-            "label": "",
+            "article": "news/memorial-day-e-bike-adventure-ultimate-preparation-guide",
+            "label": "festival",
             "title": "",
             "date": "",
             "excerpt": ""
@@ -218,8 +221,8 @@
         "post_2": {
           "type": "post",
           "settings": {
-            "article": "",
-            "label": "",
+            "article": "news/annual-e-bike-maintenance-guide-complete-service-checklist",
+            "label": "tech",
             "title": "",
             "date": "",
             "excerpt": ""
@@ -228,9 +231,9 @@
         "post_3": {
           "type": "post",
           "settings": {
-            "article": "",
-            "label": "",
-            "title": "",
+            "article": "news/2026-adult-electric-tricycle-buyers-guide-a-comprehensive-analysis-from-technological-innovation-to-scenario-adaptation",
+            "label": "Guide",
+            "title": "2026 Adult Electric Tricycle Buyer's Guide",
             "date": "",
             "excerpt": ""
           }
