@@ -42,35 +42,20 @@
         </ul>
       </div>
 
-      <!-- Company Column -->
-      <div class="footer-block footer-block--menu">
-        <h2 class="footer-block__heading" style="color: #FFFFFF;">COMPANY</h2>
-        <ul style="list-style: none; padding: 0; margin: 0;">
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">About Us</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Careers</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Press</a></li>
-          <li style="margin-bottom: 0.75rem;"><a href="#" class="list-menu__item--link" style="color: #9ca3af; text-decoration: none;">Sustainability</a></li>
-        </ul>
-      </div>
-
-      <!-- Newsletter Column -->
-      <div class="footer-block footer-block--newsletter">
+      <!-- Newsletter Column - takes remaining space -->
+      <div class="footer-block footer-block--newsletter footer-block--newsletter-last">
         <h2 class="footer-block__heading">NEWSLETTER</h2>
         <p class="footer-block__newsletter-text">Stay updated with the latest models and exclusive offers.</p>
-        <div style="display:flex;align-items:center;border-bottom:1px solid #4b5563;padding-bottom:0.75rem;gap:0.5rem;max-width:280px;">
+        <div class="newsletter-form-inner">
           <input
             id="NewsletterForm--{{ section.id }}"
             type="email"
             name="contact[email]"
             placeholder="YOUR EMAIL"
             required
-            style="background:transparent;border:none;color:#ffffff;font-family:'Lexend',sans-serif;font-size:14px;flex:1;outline:none;padding:0;"
           >
-          <button
-            type="submit"
-            style="background:transparent;border:none;color:#FFC426;cursor:pointer;padding:0;display:flex;align-items:center;justify-content:center;"
-          >
-            <span style="width:20px;height:20px;display:flex;">{{ 'icon-arrow.svg' | inline_asset_content }}</span>
+          <button type="submit" aria-label="Subscribe">
+            {{ 'icon-arrow.svg' | inline_asset_content }}
           </button>
         </div>
       </div>
