@@ -626,7 +626,7 @@ variant-selects {
     grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px 0;
-    overflow-x: hidden;
+    overflow-x: visible;
   }
 
   .pdp-gallery {
