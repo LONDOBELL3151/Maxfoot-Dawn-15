@@ -283,12 +283,19 @@
   min-height: 56px !important;
   max-height: 56px !important;
   border-radius: 8px !important;
-  box-sizing: border-box;
+  box-sizing: border-box !important;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
   line-height: 1 !important;
   padding: 0 16px !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.pdp-dynamic-checkout .shopify-payment-button__button--unbranded::before,
+.pdp-dynamic-checkout .shopify-payment-button__button--unbranded::after {
+  display: none !important;
 }
 
 .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
@@ -352,6 +359,8 @@
   transition: all 0.3s ease;
   box-sizing: border-box;
   line-height: 1;
+  overflow: hidden;
+  position: relative;
 }
 
 .pdp-add-to-cart:hover {
@@ -694,6 +703,12 @@ variant-selects {
     height: 52px !important;
     min-height: 52px !important;
     max-height: 52px !important;
+    overflow: hidden !important;
+  }
+
+  .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::before,
+  .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::after {
+    display: none !important;
   }
 
   .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
