@@ -274,9 +274,10 @@
 
 .pdp-add-to-cart {
   flex: 1;
-  height: 56px;
-  background-color: #1A1C1C;
-  color: #FFC426;
+  height: 56px !important;
+  min-height: 56px !important;
+  background-color: #1A1C1C !important;
+  color: #FFC426 !important;
   font-family: 'Space Grotesk', Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
