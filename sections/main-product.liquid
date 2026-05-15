@@ -88,47 +88,45 @@
           </div>
         </div>
 
-        <product-form class="product-form" id="product-form-{{ section.id }}">
-          {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'form' -%}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
+        {%- form 'product', product, class: 'product-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
 
-            <div class="pdp-actions">
-              <button type="submit" class="pdp-add-to-cart" onclick="addToCart()">
-                ADD TO CART
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
-              <button type="button" class="pdp-wishlist-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-              </button>
-            </div>
+          <div class="pdp-actions">
+            <button type="submit" class="pdp-add-to-cart" onclick="addToCart()">
+              ADD TO CART
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button type="button" class="pdp-wishlist-btn">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
 
-            {%- comment %} Bundle Section - between Add to Cart and Checkout {%- endcomment -%}
-            {%- for block in section.blocks -%}
-              {%- if block.type == 'bundle_product' -%}
-                {%- assign bundle_product = all_products[block.settings.product] -%}
-                {%- if bundle_product != blank -%}
-                <div class="pdp-bundle-section" {{ block.shopify_attributes }}>
-                  {%- if forloop.first -%}
-                  <p class="pdp-bundle-title">BUNDLE & SAVE</p>
-                  {%- endif -%}
-                  <label class="pdp-bundle-item">
-                    <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
-                    <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
-                    <div class="pdp-bundle-details">
-                      <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
-                      <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
-                    </div>
-                  </label>
-                </div>
+          {%- comment %} Bundle Section - between Add to Cart and Checkout {%- endcomment -%}
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'bundle_product' -%}
+              {%- assign bundle_product = all_products[block.settings.product] -%}
+              {%- if bundle_product != blank -%}
+              <div class="pdp-bundle-section" {{ block.shopify_attributes }}>
+                {%- if forloop.first -%}
+                <p class="pdp-bundle-title">BUNDLE & SAVE</p>
                 {%- endif -%}
+                <label class="pdp-bundle-item">
+                  <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
+                  <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
+                  <div class="pdp-bundle-details">
+                    <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
+                    <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
+                  </div>
+                </label>
+              </div>
               {%- endif -%}
-            {%- endfor -%}
-
-            {%- if section.settings.show_dynamic_checkout -%}
-              {{ form | payment_button }}
             {%- endif -%}
-          {%- endform -%}
-        </product-form>
+          {%- endfor -%}
+
+          {%- if section.settings.show_dynamic_checkout -%}
+            {{ form | payment_button }}
+          {%- endif -%}
+        {%- endform -%}
       </div>
     </div>
   </div>
@@ -156,7 +154,7 @@ function updateBundleSelection() {
 }
 
 function addToCart() {
-  const form = document.getElementById('product-form-{{ section.id }}');
+  const form = document.querySelector('.product-form');
   const formData = new FormData(form);
   formData.set('quantity', selectedQuantity);
 
