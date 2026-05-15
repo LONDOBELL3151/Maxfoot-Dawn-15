@@ -419,8 +419,8 @@
 }
 
 .pdp-bundle-section .pdp-bundle-item input[type='checkbox'] {
-  width: 26px !important;
-  height: 26px !important;
+  width: 20px !important;
+  height: 20px !important;
   accent-color: #FFC426;
   cursor: pointer;
   flex-shrink: 0;
