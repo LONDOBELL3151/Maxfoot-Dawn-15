@@ -103,20 +103,26 @@
               <span class="collection-review-score">{{ product.metafields.custom.rating | default: '4.9' }}</span>
             </div>
           </div>
+          {%- if product.metafields.custom.spec1_label != blank -%}
           <div class="collection-card-specs">
             <div class="collection-spec-item">
               <span class="collection-spec-label">{{ product.metafields.custom.spec1_label | escape }}</span>
               <span class="collection-spec-value">{{ product.metafields.custom.spec1_value | escape }}</span>
             </div>
+            {%- if product.metafields.custom.spec2_label != blank -%}
             <div class="collection-spec-item">
               <span class="collection-spec-label">{{ product.metafields.custom.spec2_label | escape }}</span>
               <span class="collection-spec-value gold">{{ product.metafields.custom.spec2_value | escape }}</span>
             </div>
+            {%- endif -%}
+            {%- if product.metafields.custom.spec3_label != blank -%}
             <div class="collection-spec-item">
               <span class="collection-spec-label">{{ product.metafields.custom.spec3_label | escape }}</span>
               <span class="collection-spec-value">{{ product.metafields.custom.spec3_value | escape }}</span>
             </div>
+            {%- endif -%}
           </div>
+          {%- endif -%}
           <a href="{{ product.url }}" class="collection-card-btn">View Details</a>
         </div>
       </div>
