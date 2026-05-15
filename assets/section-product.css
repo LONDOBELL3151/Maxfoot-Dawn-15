@@ -303,10 +303,12 @@
   width: 100%;
 }
 
-.pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
-  width: 100%;
+/* Dynamic Checkout Button - override base.css specificity */
+.pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
+  width: 100% !important;
   height: 56px !important;
   min-height: 56px !important;
+  max-height: 56px !important;
   border-radius: 8px;
 }
 
@@ -702,9 +704,10 @@ variant-selects {
     font-size: 12px;
   }
 
-  .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
+  .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
     height: 52px !important;
     min-height: 52px !important;
+    max-height: 52px !important;
   }
 
   .pdp-variant-section {
