@@ -559,7 +559,7 @@ variant-selects {
 
 /* Dynamic Checkout */
 .pdp-dynamic-checkout {
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 .pdp-dynamic-checkout .shopify-payment-button {
