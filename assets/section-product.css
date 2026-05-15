@@ -298,13 +298,20 @@
 }
 
 /* Dynamic Checkout Button */
-.pdp-dynamic-checkout .shopify-payment-button__button {
+.pdp-dynamic-checkout .shopify-payment-button,
+.pdp-dynamic-checkout .shopify-payment-button__button,
+.pdp-dynamic-checkout .shopify-payment-button__button--unbranded,
+.pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
   height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
+  border-radius: 8px;
+  width: 100%;
 }
 
-.pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
-  height: 56px !important;
-  border-radius: 8px;
+.pdp-dynamic-checkout .shopify-payment-button__more-options {
+  text-align: center;
+  margin-top: 12px;
 }
 
 .pdp-wishlist-btn {
@@ -692,9 +699,13 @@ variant-selects {
     font-size: 12px;
   }
 
+  .pdp-dynamic-checkout .shopify-payment-button,
   .pdp-dynamic-checkout .shopify-payment-button__button,
-  .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
+  .pdp-dynamic-checkout .shopify-payment-button__button--unbranded,
+  .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
     height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
   }
 
   .pdp-variant-section {
