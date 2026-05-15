@@ -5,7 +5,7 @@
     <header class="collection-header">
       <h2 class="collection-title">{{ collection.title }}</h2>
       <div class="collection-description">
-        <p>{{ section.settings.description | default: collection.description | default: 'Pushing the boundaries of electric mobility. Our Engineered Series combines high-performance power units with aerospace-grade materials for the ultimate riding experience.' }}</p>
+        <p>{{ section.settings.description | default: collection.description | default: 'Pushing the boundaries of electric mobility.' }}</p>
       </div>
     </header>
 
@@ -20,13 +20,11 @@
               {%- if block.settings.label != blank -%}
                 <span class="collection-card-label {% if block.settings.label_style == 'black' %}black{% else %}gold{% endif %}">{{ block.settings.label }}</span>
               {%- endif -%}
-              <a href="{{ product.url }}">
               {%- if block.settings.image != blank -%}
                 <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
               {%- else -%}
                 <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
               {%- endif -%}
-              </a>
             </div>
             <div class="collection-card-content">
               <div class="collection-card-meta">
@@ -43,13 +41,11 @@
                   {%- endif -%}
                 </div>
                 <div class="collection-review-wrap">
-                  <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                  </svg>
+                  <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
                   <span class="collection-review-score">{{ block.settings.review_score | default: '4.9' }}</span>
                 </div>
               </div>
-              {%- if block.settings.spec1_label != blank or block.settings.spec2_label != blank or block.settings.spec3_label != blank -%}
+              {%- if block.settings.spec1_label != blank -%}
               <div class="collection-card-specs">
                 {%- if block.settings.spec1_label != blank -%}
                 <div class="collection-spec-item">
@@ -71,7 +67,7 @@
                 {%- endif -%}
               </div>
               {%- endif -%}
-              <a href="{{ product.url }}" class="collection-card-btn">{{ block.settings.button_text | default: 'Add to Cart' }}</a>
+              <a href="{{ product.url }}" class="collection-card-btn">{{ block.settings.button_text | default: 'View Details' }}</a>
             </div>
           </div>
           {%- endif -%}
@@ -81,174 +77,79 @@
     {%- else -%}
     <div class="collection-grid">
       {%- for product in collection.products -%}
-        <div class="collection-card">
-          <div class="collection-card-media">
-            {%- if product.compare_at_price > product.price -%}
-              <span class="collection-card-label gold">SALE</span>
-            {%- else -%}
-              <span class="collection-card-label gold">NEW</span>
-            {%- endif -%}
-            <a href="{{ product.url }}">
-              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
-            </a>
-          </div>
-          <div class="collection-card-content">
-            <div class="collection-card-meta">
-              <h3 class="collection-card-title">{{ product.title }}</h3>
-              <p class="collection-card-subtitle">{{ product.metafields.custom.subtitle | default: product.description | truncate: 60 }}</p>
-            </div>
-            <div class="collection-card-pricing">
-              <div class="collection-price-wrap">
-                <span class="collection-card-price">{{ product.price | money }}</span>
-                {%- if product.compare_at_price > product.price -%}
-                  <span class="collection-card-compare-price">{{ product.compare_at_price | money }}</span>
-                {%- endif -%}
-              </div>
-              <div class="collection-review-wrap">
-                <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="collection-review-score">{{ product.metafields.custom.rating | default: '4.9' }}</span>
-              </div>
-            </div>
-            <div class="collection-card-specs">
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">{{ product.metafields.custom.spec1_label | default: 'Range' }}</span>
-                <span class="collection-spec-value">{{ product.metafields.custom.spec1_value | default: '60mi' }}</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">{{ product.metafields.custom.spec2_label | default: 'Power' }}</span>
-                <span class="collection-spec-value gold">{{ product.metafields.custom.spec2_value | default: '750w' }}</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">{{ product.metafields.custom.spec3_label | default: 'Speed' }}</span>
-                <span class="collection-spec-value">{{ product.metafields.custom.spec3_value | default: '28mph' }}</span>
-              </div>
-            </div>
-            <a href="{{ product.url }}" class="collection-card-btn">Add to Cart</a>
-          </div>
+      <div class="collection-card">
+        <div class="collection-card-media">
+          {%- if product.compare_at_price > product.price -%}
+          <span class="collection-card-label gold">SALE</span>
+          {%- else -%}
+          <span class="collection-card-label gold">NEW</span>
+          {%- endif -%}
+          <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
         </div>
+        <div class="collection-card-content">
+          <div class="collection-card-meta">
+            <h3 class="collection-card-title">{{ product.title }}</h3>
+            <p class="collection-card-subtitle">{{ product.metafields.custom.subtitle | default: product.description | truncate: 60 }}</p>
+          </div>
+          <div class="collection-card-pricing">
+            <div class="collection-price-wrap">
+              <span class="collection-card-price">{{ product.price | money }}</span>
+              {%- if product.compare_at_price > product.price -%}
+              <span class="collection-card-compare-price">{{ product.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+            <div class="collection-review-wrap">
+              <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span class="collection-review-score">{{ product.metafields.custom.rating | default: '4.9' }}</span>
+            </div>
+          </div>
+          <div class="collection-card-specs">
+            <div class="collection-spec-item">
+              <span class="collection-spec-label">{{ product.metafields.custom.spec1_label | default: 'Range' }}</span>
+              <span class="collection-spec-value">{{ product.metafields.custom.spec1_value | default: '60mi' }}</span>
+            </div>
+            <div class="collection-spec-item">
+              <span class="collection-spec-label">{{ product.metafields.custom.spec2_label | default: 'Power' }}</span>
+              <span class="collection-spec-value gold">{{ product.metafields.custom.spec2_value | default: '750w' }}</span>
+            </div>
+            <div class="collection-spec-item">
+              <span class="collection-spec-label">{{ product.metafields.custom.spec3_label | default: 'Speed' }}</span>
+              <span class="collection-spec-value">{{ product.metafields.custom.spec3_value | default: '28mph' }}</span>
+            </div>
+          </div>
+          <a href="{{ product.url }}" class="collection-card-btn">View Details</a>
+        </div>
+      </div>
       {%- else -%}
-        <div class="collection-card">
-          <div class="collection-card-media">
-            <span class="collection-card-label gold">PRO SPEC</span>
-            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f3f4;">
-              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">PRODUCT IMAGE</span>
-            </div>
-          </div>
-          <div class="collection-card-content">
-            <div class="collection-card-meta">
-              <h3 class="collection-card-title">Trail Master</h3>
-              <p class="collection-card-subtitle">Unrivaled off-road performance for explorers.</p>
-            </div>
-            <div class="collection-card-pricing">
-              <div class="collection-price-wrap">
-                <span class="collection-card-price">$2,499.00</span>
-              </div>
-              <div class="collection-review-wrap">
-                <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="collection-review-score">4.9</span>
-              </div>
-            </div>
-            <div class="collection-card-specs">
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Range</span>
-                <span class="collection-spec-value">60mi</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Power</span>
-                <span class="collection-spec-value gold">1200w</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Speed</span>
-                <span class="collection-spec-value">28mph</span>
-              </div>
-            </div>
-            <a href="#" class="collection-card-btn">Add to Cart</a>
+      <div class="collection-card">
+        <div class="collection-card-media">
+          <span class="collection-card-label gold">PRO SPEC</span>
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f3f4;">
+            <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">PRODUCT IMAGE</span>
           </div>
         </div>
-        <div class="collection-card">
-          <div class="collection-card-media">
-            <span class="collection-card-label gold">URBAN CORE</span>
-            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f3f4;">
-              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">PRODUCT IMAGE</span>
+        <div class="collection-card-content">
+          <div class="collection-card-meta">
+            <h3 class="collection-card-title">Trail Master</h3>
+            <p class="collection-card-subtitle">Unrivaled off-road performance.</p>
+          </div>
+          <div class="collection-card-pricing">
+            <div class="collection-price-wrap">
+              <span class="collection-card-price">$2,499.00</span>
+            </div>
+            <div class="collection-review-wrap">
+              <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+              <span class="collection-review-score">4.9</span>
             </div>
           </div>
-          <div class="collection-card-content">
-            <div class="collection-card-meta">
-              <h3 class="collection-card-title">City Phantom</h3>
-              <p class="collection-card-subtitle">Silent, stealthy, and incredibly agile.</p>
-            </div>
-            <div class="collection-card-pricing">
-              <div class="collection-price-wrap">
-                <span class="collection-card-price">$1,899.00</span>
-              </div>
-              <div class="collection-review-wrap">
-                <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="collection-review-score">4.8</span>
-              </div>
-            </div>
-            <div class="collection-card-specs">
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Speed</span>
-                <span class="collection-spec-value">28mph</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Weight</span>
-                <span class="collection-spec-value gold">48lbs</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Battery</span>
-                <span class="collection-spec-value">48V</span>
-              </div>
-            </div>
-            <a href="#" class="collection-card-btn">Add to Cart</a>
+          <div class="collection-card-specs">
+            <div class="collection-spec-item"><span class="collection-spec-label">Range</span><span class="collection-spec-value">60mi</span></div>
+            <div class="collection-spec-item"><span class="collection-spec-label">Power</span><span class="collection-spec-value gold">1200w</span></div>
+            <div class="collection-spec-item"><span class="collection-spec-label">Speed</span><span class="collection-spec-value">28mph</span></div>
           </div>
+          <a href="#" class="collection-card-btn">View Details</a>
         </div>
-        <div class="collection-card">
-          <div class="collection-card-media">
-            <span class="collection-card-label black">HEAVY DUTY</span>
-            <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#f3f3f4;">
-              <span style="font-family:'Space Grotesk';color:#9ca3af;font-size:12px;letter-spacing:0.1em;">PRODUCT IMAGE</span>
-            </div>
-          </div>
-          <div class="collection-card-content">
-            <div class="collection-card-meta">
-              <h3 class="collection-card-title">Cargo X-Treme</h3>
-              <p class="collection-card-subtitle">Maximum utility meets extreme power.</p>
-            </div>
-            <div class="collection-card-pricing">
-              <div class="collection-price-wrap">
-                <span class="collection-card-price">$2,799.00</span>
-              </div>
-              <div class="collection-review-wrap">
-                <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                </svg>
-                <span class="collection-review-score">4.7</span>
-              </div>
-            </div>
-            <div class="collection-card-specs">
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Payload</span>
-                <span class="collection-spec-value">400lbs</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Battery</span>
-                <span class="collection-spec-value gold">Dual</span>
-              </div>
-              <div class="collection-spec-item">
-                <span class="collection-spec-label">Motor</span>
-                <span class="collection-spec-value">750w</span>
-              </div>
-            </div>
-            <a href="#" class="collection-card-btn">Add to Cart</a>
-          </div>
-        </div>
+      </div>
       {%- endfor -%}
     </div>
     {%- endif -%}
@@ -263,8 +164,7 @@
     {
       "type": "textarea",
       "id": "description",
-      "label": "Section Description",
-      "info": "Override collection description or leave empty to use collection's default description"
+      "label": "Section Description"
     },
     {
       "type": "range",
@@ -300,30 +200,27 @@
         {
           "type": "text",
           "id": "label",
-          "label": "Product Label",
-          "info": "e.g., PRO SPEC, URBAN CORE, SALE"
+          "label": "Product Label"
         },
         {
           "type": "select",
           "id": "label_style",
           "label": "Label Background",
           "options": [
-            { "value": "gold", "label": "Gold (#FFC426)" },
-            { "value": "black", "label": "Black (#1A1C1C)" }
+            { "value": "gold", "label": "Gold" },
+            { "value": "black", "label": "Black" }
           ],
           "default": "gold"
         },
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Custom Image",
-          "info": "Leave empty to use product featured image"
+          "label": "Custom Image"
         },
         {
           "type": "text",
           "id": "title",
-          "label": "Custom Title",
-          "info": "Leave empty to use product title"
+          "label": "Custom Title"
         },
         {
           "type": "text",
@@ -338,13 +235,12 @@
         },
         {
           "type": "header",
-          "content": "Specs (3 columns)"
+          "content": "Specs"
         },
         {
           "type": "text",
           "id": "spec1_label",
-          "label": "Spec 1 Label",
-          "info": "e.g., Range, Speed, Power"
+          "label": "Spec 1 Label"
         },
         {
           "type": "text",
@@ -354,10 +250,10 @@
         {
           "type": "select",
           "id": "spec1_style",
-          "label": "Spec 1 Value Color",
+          "label": "Spec 1 Color",
           "options": [
-            { "value": "default", "label": "Dark (#1A1C1C)" },
-            { "value": "gold", "label": "Gold (#785a00)" }
+            { "value": "default", "label": "Dark" },
+            { "value": "gold", "label": "Gold" }
           ],
           "default": "default"
         },
@@ -374,10 +270,10 @@
         {
           "type": "select",
           "id": "spec2_style",
-          "label": "Spec 2 Value Color",
+          "label": "Spec 2 Color",
           "options": [
-            { "value": "default", "label": "Dark (#1A1C1C)" },
-            { "value": "gold", "label": "Gold (#785a00)" }
+            { "value": "default", "label": "Dark" },
+            { "value": "gold", "label": "Gold" }
           ],
           "default": "gold"
         },
@@ -394,10 +290,10 @@
         {
           "type": "select",
           "id": "spec3_style",
-          "label": "Spec 3 Value Color",
+          "label": "Spec 3 Color",
           "options": [
-            { "value": "default", "label": "Dark (#1A1C1C)" },
-            { "value": "gold", "label": "Gold (#785a00)" }
+            { "value": "default", "label": "Dark" },
+            { "value": "gold", "label": "Gold" }
           ],
           "default": "default"
         },
@@ -405,7 +301,7 @@
           "type": "text",
           "id": "button_text",
           "label": "Button Text",
-          "default": "Add to Cart"
+          "default": "View Details"
         }
       ]
     }
