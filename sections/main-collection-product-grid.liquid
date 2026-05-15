@@ -16,7 +16,7 @@
           {%- assign product = all_products[block.settings.product] -%}
           {%- if product != blank -%}
           <div class="collection-card" {{ block.shopify_attributes }}>
-            <div class="collection-card-media">
+            <a href="{{ product.url }}" class="collection-card-media">
               {%- if block.settings.label != blank -%}
                 <span class="collection-card-label {% if block.settings.label_style == 'black' %}black{% else %}gold{% endif %}">{{ block.settings.label }}</span>
               {%- endif -%}
@@ -25,7 +25,7 @@
               {%- else -%}
                 <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
               {%- endif -%}
-            </div>
+            </a>
             <div class="collection-card-content">
               <div class="collection-card-meta">
                 <h3 class="collection-card-title">{{ block.settings.title | default: product.title }}</h3>
@@ -86,7 +86,9 @@
             {%- else -%}
               <span class="collection-card-label gold">NEW</span>
             {%- endif -%}
-            <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
+            </a>
           </div>
           <div class="collection-card-content">
             <div class="collection-card-meta">
