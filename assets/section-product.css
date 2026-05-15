@@ -269,7 +269,7 @@
 /* Action Buttons */
 /* Dynamic Checkout Button */
 .pdp-dynamic-checkout {
-  margin-top: 8px;
+  margin-top: 4px;
   width: 100%;
 }
 
@@ -328,12 +328,12 @@
 .product-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
 }
 
 .pdp-actions {
   display: flex;
-  gap: 8px;
+  gap: 4px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -684,7 +684,7 @@ variant-selects {
 
   .pdp-actions {
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
     width: 100%;
   }
 
