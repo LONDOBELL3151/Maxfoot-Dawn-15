@@ -30,19 +30,44 @@
           }
         },
         {
-          "type": "promotion"
+          "type": "promotion",
+          "settings": {
+            "promotion_badge": "",
+            "promotion_text": ""
+          }
         },
         {
-          "type": "variant_picker"
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button"
+          }
         },
         {
-          "type": "quantity_selector"
+          "type": "quantity_selector",
+          "settings": {
+            "quantity_label": "QTY"
+          }
         },
         {
-          "type": "buy_buttons"
+          "type": "buy_buttons",
+          "settings": {
+            "button_text": "ADD TO CART"
+          }
         },
         {
-          "type": "dynamic_checkout"
+          "type": "bundle_product"
+        },
+        {
+          "type": "bundle_product"
+        },
+        {
+          "type": "bundle_product"
+        },
+        {
+          "type": "dynamic_checkout",
+          "settings": {
+            "show_dynamic_checkout": true
+          }
         }
       ]
     }
