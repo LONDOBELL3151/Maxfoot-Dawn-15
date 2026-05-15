@@ -5,10 +5,78 @@
     <header class="collection-header">
       <h2 class="collection-title">{{ collection.title }}</h2>
       <div class="collection-description">
-        <p>{{ collection.description | default: 'Pushing the boundaries of electric mobility. Our Engineered Series combines high-performance power units with aerospace-grade materials for the ultimate riding experience.' }}</p>
+        <p>{{ section.settings.description | default: collection.description | default: 'Pushing the boundaries of electric mobility. Our Engineered Series combines high-performance power units with aerospace-grade materials for the ultimate riding experience.' }}</p>
       </div>
     </header>
 
+    {%- if section.blocks.size > 0 -%}
+    <div class="collection-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'product' -%}
+          {%- assign product = all_products[block.settings.product] -%}
+          {%- if product != blank -%}
+          <div class="collection-card" {{ block.shopify_attributes }}>
+            <div class="collection-card-media">
+              {%- if block.settings.label != blank -%}
+                <span class="collection-card-label {% if block.settings.label_style == 'black' %}black{% else %}gold{% endif %}">{{ block.settings.label }}</span>
+              {%- endif -%}
+              {%- if block.settings.image != blank -%}
+                <img src="{{ block.settings.image | image_url: width: 400 }}" alt="{{ block.settings.image.alt | escape }}" loading="lazy">
+              {%- else -%}
+                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title | escape }}" loading="lazy">
+              {%- endif -%}
+            </div>
+            <div class="collection-card-content">
+              <div class="collection-card-meta">
+                <h3 class="collection-card-title">{{ block.settings.title | default: product.title }}</h3>
+                {%- if block.settings.subtitle != blank -%}
+                  <p class="collection-card-subtitle">{{ block.settings.subtitle }}</p>
+                {%- endif -%}
+              </div>
+              <div class="collection-card-pricing">
+                <div class="collection-price-wrap">
+                  <span class="collection-card-price">{{ product.price | money }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                    <span class="collection-card-compare-price">{{ product.compare_at_price | money }}</span>
+                  {%- endif -%}
+                </div>
+                <div class="collection-review-wrap">
+                  <svg class="collection-review-star" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                  </svg>
+                  <span class="collection-review-score">{{ block.settings.review_score | default: '4.9' }}</span>
+                </div>
+              </div>
+              {%- if block.settings.spec1_label != blank or block.settings.spec2_label != blank or block.settings.spec3_label != blank -%}
+              <div class="collection-card-specs">
+                {%- if block.settings.spec1_label != blank -%}
+                <div class="collection-spec-item">
+                  <span class="collection-spec-label">{{ block.settings.spec1_label }}</span>
+                  <span class="collection-spec-value {% if block.settings.spec1_style == 'gold' %}gold{% endif %}">{{ block.settings.spec1_value }}</span>
+                </div>
+                {%- endif -%}
+                {%- if block.settings.spec2_label != blank -%}
+                <div class="collection-spec-item">
+                  <span class="collection-spec-label">{{ block.settings.spec2_label }}</span>
+                  <span class="collection-spec-value {% if block.settings.spec2_style == 'gold' %}gold{% endif %}">{{ block.settings.spec2_value }}</span>
+                </div>
+                {%- endif -%}
+                {%- if block.settings.spec3_label != blank -%}
+                <div class="collection-spec-item">
+                  <span class="collection-spec-label">{{ block.settings.spec3_label }}</span>
+                  <span class="collection-spec-value {% if block.settings.spec3_style == 'gold' %}gold{% endif %}">{{ block.settings.spec3_value }}</span>
+                </div>
+                {%- endif -%}
+              </div>
+              {%- endif -%}
+              <a href="{{ product.url }}" class="collection-card-btn">{{ block.settings.button_text | default: 'Add to Cart' }}</a>
+            </div>
+          </div>
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- else -%}
     <div class="collection-grid">
       {%- for product in collection.products -%}
         <div class="collection-card">
@@ -179,6 +247,7 @@
         </div>
       {%- endfor -%}
     </div>
+    {%- endif -%}
   </div>
 </section>
 
@@ -187,6 +256,12 @@
   "name": "Collection Product Grid",
   "class": "section",
   "settings": [
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Section Description",
+      "info": "Override collection description or leave empty to use collection's default description"
+    },
     {
       "type": "range",
       "id": "padding_top",
@@ -206,6 +281,129 @@
       "unit": "px",
       "label": "Padding Bottom",
       "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "product",
+      "name": "Product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Product Label",
+          "info": "e.g., PRO SPEC, URBAN CORE, SALE"
+        },
+        {
+          "type": "select",
+          "id": "label_style",
+          "label": "Label Background",
+          "options": [
+            { "value": "gold", "label": "Gold (#FFC426)" },
+            { "value": "black", "label": "Black (#1A1C1C)" }
+          ],
+          "default": "gold"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Custom Image",
+          "info": "Leave empty to use product featured image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Custom Title",
+          "info": "Leave empty to use product title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "review_score",
+          "label": "Review Score",
+          "default": "4.9"
+        },
+        {
+          "type": "header",
+          "content": "Specs (3 columns)"
+        },
+        {
+          "type": "text",
+          "id": "spec1_label",
+          "label": "Spec 1 Label",
+          "info": "e.g., Range, Speed, Power"
+        },
+        {
+          "type": "text",
+          "id": "spec1_value",
+          "label": "Spec 1 Value"
+        },
+        {
+          "type": "select",
+          "id": "spec1_style",
+          "label": "Spec 1 Value Color",
+          "options": [
+            { "value": "default", "label": "Dark (#1A1C1C)" },
+            { "value": "gold", "label": "Gold (#785a00)" }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "text",
+          "id": "spec2_label",
+          "label": "Spec 2 Label"
+        },
+        {
+          "type": "text",
+          "id": "spec2_value",
+          "label": "Spec 2 Value"
+        },
+        {
+          "type": "select",
+          "id": "spec2_style",
+          "label": "Spec 2 Value Color",
+          "options": [
+            { "value": "default", "label": "Dark (#1A1C1C)" },
+            { "value": "gold", "label": "Gold (#785a00)" }
+          ],
+          "default": "gold"
+        },
+        {
+          "type": "text",
+          "id": "spec3_label",
+          "label": "Spec 3 Label"
+        },
+        {
+          "type": "text",
+          "id": "spec3_value",
+          "label": "Spec 3 Value"
+        },
+        {
+          "type": "select",
+          "id": "spec3_style",
+          "label": "Spec 3 Value Color",
+          "options": [
+            { "value": "default", "label": "Dark (#1A1C1C)" },
+            { "value": "gold", "label": "Gold (#785a00)" }
+          ],
+          "default": "default"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Add to Cart"
+        }
+      ]
     }
   ]
 }
