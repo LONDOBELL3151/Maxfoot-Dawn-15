@@ -279,9 +279,9 @@
 
 .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
   width: 100% !important;
-  height: 44px !important;
-  min-height: 44px !important;
-  max-height: 44px !important;
+  height: 56px !important;
+  min-height: 56px !important;
+  max-height: 56px !important;
   border-radius: 8px !important;
   box-sizing: border-box !important;
   display: flex !important;
@@ -341,7 +341,7 @@
 .pdp-add-to-cart {
   flex: 1;
   width: 100%;
-  height: 44px;
+  height: 56px;
   background-color: #1A1C1C;
   color: #FFC426;
   font-family: 'Space Grotesk', Arial, sans-serif;
@@ -370,8 +370,8 @@
 }
 
 .pdp-wishlist-btn {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   background-color: transparent;
   border: 1px solid #E5E5E5;
   border-radius: 8px;
@@ -691,9 +691,9 @@ variant-selects {
 
   .pdp-add-to-cart {
     width: 100%;
-    height: 44px;
-    min-height: 44px;
-    max-height: 44px;
+    height: 56px;
+    min-height: 56px;
+    max-height: 56px;
   }
 
   .pdp-wishlist-btn {
@@ -701,9 +701,9 @@ variant-selects {
   }
 
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
     overflow: hidden !important;
     padding: 0 !important;
   }
@@ -714,9 +714,9 @@ variant-selects {
   }
 
   .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
     padding: 0 !important;
   }
 
