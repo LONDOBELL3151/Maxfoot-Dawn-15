@@ -1,76 +1,105 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "main": {
+    "main_product_Q7dMRk": {
       "type": "main-product",
-      "settings": {
-        "padding_top": 80
-      },
-      "blocks": [
-        {
+      "blocks": {
+        "text_YrtGj3": {
           "type": "text",
           "settings": {
-            "text": "BEST SELLER"
+            "text": ""
           }
         },
-        {
-          "type": "title"
+        "title_UdixC3": {
+          "type": "title",
+          "settings": {}
         },
-        {
-          "type": "description"
+        "description_UGagYH": {
+          "type": "description",
+          "settings": {
+            "truncate_count": 150
+          }
         },
-        {
-          "type": "price"
+        "price_xAUHpU": {
+          "type": "price",
+          "settings": {}
         },
-        {
+        "rating_Ehbr7j": {
           "type": "rating",
           "settings": {
             "enable_star_rating": true,
             "star_count": 5,
-            "review_label": "Verified Owner"
+            "review_label": ""
           }
         },
-        {
+        "promotion_XHq9FY": {
           "type": "promotion",
           "settings": {
-            "promotion_badge": "",
-            "promotion_text": ""
+            "promotion_badge": "Mother's Day Offer",
+            "promotion_text": "Limited at $699"
           }
         },
-        {
+        "bundle_product_ymkaAQ": {
+          "type": "bundle_product",
+          "settings": {
+            "product": "rearview-bicycle-mirrors",
+            "bundle_title": "BUNDLE & SAVE"
+          }
+        },
+        "variant_picker_MH6GHG": {
           "type": "variant_picker",
           "settings": {
             "picker_type": "button"
           }
         },
-        {
+        "quantity_selector_NFBGif": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {
             "quantity_label": "QTY"
           }
         },
-        {
+        "buy_buttons_hEjfRr": {
           "type": "buy_buttons",
           "settings": {
             "button_text": "ADD TO CART"
           }
         },
-        {
-          "type": "bundle_product"
-        },
-        {
-          "type": "bundle_product"
-        },
-        {
-          "type": "bundle_product"
-        },
-        {
+        "dynamic_checkout_EfqpgM": {
           "type": "dynamic_checkout",
           "settings": {
             "show_dynamic_checkout": true
           }
         }
-      ]
+      },
+      "block_order": [
+        "text_YrtGj3",
+        "title_UdixC3",
+        "description_UGagYH",
+        "price_xAUHpU",
+        "rating_Ehbr7j",
+        "promotion_XHq9FY",
+        "bundle_product_ymkaAQ",
+        "variant_picker_MH6GHG",
+        "quantity_selector_NFBGif",
+        "buy_buttons_hEjfRr",
+        "dynamic_checkout_EfqpgM"
+      ],
+      "name": "Product Detail",
+      "settings": {
+        "padding_top": 0
+      }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main_product_Q7dMRk"
+  ]
 }

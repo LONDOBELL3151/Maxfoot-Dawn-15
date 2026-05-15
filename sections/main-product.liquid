@@ -76,7 +76,11 @@
               {%- when 'promotion' -%}
                 {%- if block.settings.promotion_badge != blank -%}
                 <div class="pdp-promotion-box" {{ block.shopify_attributes }}>
-                  <span class="pdp-promotion-badge">{{ block.settings.promotion_badge | escape }}</span>
+                  {%- if block.settings.promotion_badge != blank -%}
+                  <div class="pdp-promotion-header">
+                    <span class="pdp-promotion-badge">{{ block.settings.promotion_badge | escape }}</span>
+                  </div>
+                  {%- endif -%}
                   {%- if block.settings.promotion_text != blank -%}
                   <span class="pdp-promotion-text">{{ block.settings.promotion_text | escape }}</span>
                   {%- endif -%}
@@ -346,40 +350,6 @@ function addToCart() {
       ]
     },
     {
-      "type": "bundle_product",
-      "name": "Bundle Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Select Bundle Product"
-        },
-        {
-          "type": "text",
-          "id": "bundle_title",
-          "label": "Bundle Section Title",
-          "default": "BUNDLE & SAVE"
-        }
-      ]
-    },
-    {
-      "type": "bundle_product",
-      "name": "Bundle Product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "Select Bundle Product"
-        },
-        {
-          "type": "text",
-          "id": "bundle_title",
-          "label": "Bundle Section Title",
-          "default": "BUNDLE & SAVE"
-        }
-      ]
-    },
-    {
       "type": "dynamic_checkout",
       "name": "Dynamic Checkout",
       "limit": 1,
@@ -406,9 +376,6 @@ function addToCart() {
         { "type": "variant_picker" },
         { "type": "quantity_selector" },
         { "type": "buy_buttons" },
-        { "type": "bundle_product" },
-        { "type": "bundle_product" },
-        { "type": "bundle_product" },
         { "type": "dynamic_checkout" }
       ]
     }
