@@ -269,7 +269,7 @@
 /* Action Buttons */
 /* Dynamic Checkout Button */
 .pdp-dynamic-checkout {
-  margin-top: 12px;
+  margin-top: 8px;
   width: 100%;
 }
 
@@ -328,12 +328,12 @@
 .product-form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 12px;
 }
 
 .pdp-actions {
   display: flex;
-  gap: 12px;
+  gap: 8px;
   width: 100%;
   box-sizing: border-box;
 }
@@ -369,8 +369,8 @@
 }
 
 .pdp-wishlist-btn {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   background-color: transparent;
   border: 1px solid #E5E5E5;
   border-radius: 8px;
@@ -684,7 +684,7 @@ variant-selects {
 
   .pdp-actions {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     width: 100%;
   }
 
