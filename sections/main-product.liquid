@@ -27,105 +27,121 @@
 
       <!-- Right: Product Info -->
       <div class="pdp-info">
-        {%- if section.settings.badge_text != blank -%}
-        <div class="pdp-badges">
-          <span class="pdp-badge">{{ section.settings.badge_text | escape }}</span>
-        </div>
-        {%- endif -%}
-
-        <h1 class="pdp-title">{{ product.title | escape }}</h1>
-
-        {%- if product.description != blank -%}
-        <p class="pdp-subtitle">{{ product.description | strip_html | truncate: 150 }}</p>
-        {%- endif -%}
-
-        <div class="pdp-price-wrap">
-          <span class="pdp-price">{{ product.price | money }}</span>
-          {%- if product.compare_at_price > product.price -%}
-          <span class="pdp-compare-price">{{ product.compare_at_price | money }}</span>
-          {%- endif -%}
-        </div>
-
-        {%- if section.settings.enable_star_rating -%}
-        <div class="pdp-badges">
-          <div class="pdp-stars">
-            {%- for i in (1..5) -%}
-              {%- if i <= section.settings.star_count -%}
-                <svg class="pdp-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              {%- else -%}
-                <svg class="pdp-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-          {%- if section.settings.review_label != blank -%}
-          <span class="pdp-badge" style="background:transparent;color:#5f5e5e;">{{ section.settings.review_label | escape }}</span>
-          {%- endif -%}
-        </div>
-        {%- endif -%}
-
-        {%- if section.settings.promotion_badge != blank -%}
-        <div class="pdp-promotion-box">
-          <div class="pdp-promotion-header">
-            <span class="pdp-promotion-badge">{{ section.settings.promotion_badge | escape }}</span>
-          </div>
-          {%- if section.settings.promotion_text != blank -%}
-          <span class="pdp-promotion-text">{{ section.settings.promotion_text | escape }}</span>
-          {%- endif -%}
-        </div>
-        {%- endif -%}
-
-        {%- comment %} Variant Picker - auto pulls from product variants {%- endcomment -%}
-        {%- unless product.has_only_default_variant -%}
-          {%- render 'product-variant-picker', product: product, block: block, product_form_id: 'product-form-' | append: section.id -%}
-        {%- endunless -%}
-
-        <div class="pdp-quantity-section">
-          <span class="pdp-quantity-label">QTY</span>
-          <div class="pdp-quantity-control">
-            <button class="pdp-quantity-btn" onclick="changeQuantity(-1)">-</button>
-            <input type="number" class="pdp-quantity-input" id="pdp-quantity" value="1" min="1">
-            <button class="pdp-quantity-btn" onclick="changeQuantity(1)">+</button>
-          </div>
-        </div>
-
         {%- form 'product', product, class: 'product-form' -%}
           <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
 
-          <div class="pdp-actions">
-            <button type="submit" class="pdp-add-to-cart" onclick="addToCart()">
-              ADD TO CART
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-            <button type="button" class="pdp-wishlist-btn">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-            </button>
-          </div>
-
-          {%- comment %} Bundle Section - between Add to Cart and Checkout {%- endcomment -%}
           {%- for block in section.blocks -%}
-            {%- if block.type == 'bundle_product' -%}
-              {%- assign bundle_product = all_products[block.settings.product] -%}
-              {%- if bundle_product != blank -%}
-              <div class="pdp-bundle-section" {{ block.shopify_attributes }}>
-                {%- if forloop.first -%}
-                <p class="pdp-bundle-title">BUNDLE & SAVE</p>
+            {%- case block.type -%}
+              {%- when 'text' -%}
+                {%- if block.settings.text != blank -%}
+                <div class="pdp-badges" {{ block.shopify_attributes }}>
+                  <span class="pdp-badge">{{ block.settings.text | escape }}</span>
+                </div>
                 {%- endif -%}
-                <label class="pdp-bundle-item">
-                  <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
-                  <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
-                  <div class="pdp-bundle-details">
-                    <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
-                    <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
-                  </div>
-                </label>
-              </div>
-              {%- endif -%}
-            {%- endif -%}
-          {%- endfor -%}
 
-          {%- if section.settings.show_dynamic_checkout -%}
-            {{ form | payment_button }}
-          {%- endif -%}
+              {%- when 'title' -%}
+                <h1 class="pdp-title" {{ block.shopify_attributes }}>{{ product.title | escape }}</h1>
+
+              {%- when 'description' -%}
+                {%- if product.description != blank -%}
+                <p class="pdp-subtitle" {{ block.shopify_attributes }}>{{ product.description | strip_html | truncate: block.settings.truncate_count | default: 150 }}</p>
+                {%- endif -%}
+
+              {%- when 'price' -%}
+                <div class="pdp-price-wrap" {{ block.shopify_attributes }}>
+                  <span class="pdp-price">{{ product.price | money }}</span>
+                  {%- if product.compare_at_price > product.price -%}
+                  <span class="pdp-compare-price">{{ product.compare_at_price | money }}</span>
+                  {%- endif -%}
+                </div>
+
+              {%- when 'rating' -%}
+                {%- if block.settings.enable_star_rating -%}
+                <div class="pdp-badges" {{ block.shopify_attributes }}>
+                  <div class="pdp-stars">
+                    {%- for i in (1..5) -%}
+                      {%- if i <= block.settings.star_count -%}
+                        <svg class="pdp-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      {%- else -%}
+                        <svg class="pdp-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                      {%- endif -%}
+                    {%- endfor -%}
+                  </div>
+                  {%- if block.settings.review_label != blank -%}
+                  <span class="pdp-badge" style="background:transparent;color:#5f5e5e;">{{ block.settings.review_label | escape }}</span>
+                  {%- endif -%}
+                </div>
+                {%- endif -%}
+
+              {%- when 'promotion' -%}
+                {%- if block.settings.promotion_badge != blank -%}
+                <div class="pdp-promotion-box" {{ block.shopify_attributes }}>
+                  {%- if block.settings.promotion_badge != blank -%}
+                  <div class="pdp-promotion-header">
+                    <span class="pdp-promotion-badge">{{ block.settings.promotion_badge | escape }}</span>
+                  </div>
+                  {%- endif -%}
+                  {%- if block.settings.promotion_text != blank -%}
+                  <span class="pdp-promotion-text">{{ block.settings.promotion_text | escape }}</span>
+                  {%- endif -%}
+                </div>
+                {%- endif -%}
+
+              {%- when 'variant_picker' -%}
+                {%- unless product.has_only_default_variant -%}
+                  <div class="pdp-variant-section" {{ block.shopify_attributes }}>
+                    {% render 'product-variant-picker', product: product, block: block, product_form_id: 'product-form-' | append: section.id %}
+                  </div>
+                {%- endunless -%}
+
+              {%- when 'quantity_selector' -%}
+                <div class="pdp-quantity-section" {{ block.shopify_attributes }}>
+                  <span class="pdp-quantity-label">{{ block.settings.quantity_label | default: 'QTY' }}</span>
+                  <div class="pdp-quantity-control">
+                    <button type="button" class="pdp-quantity-btn" onclick="changeQuantity(-1)">-</button>
+                    <input type="number" class="pdp-quantity-input" id="pdp-quantity" name="quantity" value="1" min="1">
+                    <button type="button" class="pdp-quantity-btn" onclick="changeQuantity(1)">+</button>
+                  </div>
+                </div>
+
+              {%- when 'buy_buttons' -%}
+                <div class="pdp-actions" {{ block.shopify_attributes }}>
+                  <button type="submit" class="pdp-add-to-cart" onclick="addToCart()">
+                    {{ block.settings.button_text | default: 'ADD TO CART' }}
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                  </button>
+                  <button type="button" class="pdp-wishlist-btn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  </button>
+                </div>
+
+              {%- when 'bundle_product' -%}
+                {%- assign bundle_product = all_products[block.settings.product] -%}
+                {%- if bundle_product != blank -%}
+                <div class="pdp-bundle-section" {{ block.shopify_attributes }}>
+                  {%- if forloop.first -%}
+                  <p class="pdp-bundle-title">{{ block.settings.bundle_title | default: 'BUNDLE & SAVE' }}</p>
+                  {%- endif -%}
+                  <label class="pdp-bundle-item">
+                    <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
+                    <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
+                    <div class="pdp-bundle-details">
+                      <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
+                      <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
+                    </div>
+                  </label>
+                </div>
+                {%- endif -%}
+
+              {%- when 'dynamic_checkout' -%}
+                {%- if block.settings.show_dynamic_checkout -%}
+                  <div class="pdp-dynamic-checkout" {{ block.shopify_attributes }}>
+                    {{ form | payment_button }}
+                  </div>
+                {%- endif -%}
+
+            {%- endcase -%}
+          {%- endfor -%}
         {%- endform -%}
       </div>
     </div>
@@ -149,9 +165,7 @@ function changeQuantity(delta) {
   selectedQuantity = val;
 }
 
-function updateBundleSelection() {
-  // Bundle selection is tracked via checkbox state
-}
+function updateBundleSelection() {}
 
 function addToCart() {
   const form = document.querySelector('.product-form');
@@ -187,58 +201,137 @@ function addToCart() {
       "unit": "px",
       "label": "Padding Top",
       "default": 80
-    },
-    {
-      "type": "text",
-      "id": "badge_text",
-      "label": "Badge Text",
-      "info": "e.g., BEST SELLER, NEW ARRIVAL"
-    },
-    {
-      "type": "checkbox",
-      "id": "enable_star_rating",
-      "label": "Show Star Rating",
-      "default": true
-    },
-    {
-      "type": "range",
-      "id": "star_count",
-      "min": 1,
-      "max": 5,
-      "step": 1,
-      "label": "Star Count",
-      "default": 5
-    },
-    {
-      "type": "text",
-      "id": "review_label",
-      "label": "Review Label",
-      "info": "e.g., Verified Owner"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_dynamic_checkout",
-      "label": "Show Dynamic Checkout Button",
-      "default": true
-    },
-    {
-      "type": "header",
-      "content": "Promotion Box"
-    },
-    {
-      "type": "text",
-      "id": "promotion_badge",
-      "label": "Promotion Badge",
-      "info": "e.g., Mother's Day Offer"
-    },
-    {
-      "type": "text",
-      "id": "promotion_text",
-      "label": "Promotion Text",
-      "info": "e.g., Limited at $699 ~2026.5.11"
     }
   ],
   "blocks": [
+    {
+      "type": "text",
+      "name": "Badge / Label",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Badge Text",
+          "info": "e.g., BEST SELLER, NEW ARRIVAL"
+        }
+      ]
+    },
+    {
+      "type": "title",
+      "name": "Title",
+      "limit": 1
+    },
+    {
+      "type": "description",
+      "name": "Description",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "range",
+          "id": "truncate_count",
+          "min": 50,
+          "max": 300,
+          "step": 10,
+          "label": "Character Limit",
+          "default": 150
+        }
+      ]
+    },
+    {
+      "type": "price",
+      "name": "Price",
+      "limit": 1
+    },
+    {
+      "type": "rating",
+      "name": "Star Rating",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_star_rating",
+          "label": "Show Star Rating",
+          "default": true
+        },
+        {
+          "type": "range",
+          "id": "star_count",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "label": "Star Count",
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "review_label",
+          "label": "Review Label",
+          "info": "e.g., Verified Owner"
+        }
+      ]
+    },
+    {
+      "type": "promotion",
+      "name": "Promotion Box",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "promotion_badge",
+          "label": "Promotion Badge",
+          "info": "e.g., Mother's Day Offer"
+        },
+        {
+          "type": "text",
+          "id": "promotion_text",
+          "label": "Promotion Text",
+          "info": "e.g., Limited at $699"
+        }
+      ]
+    },
+    {
+      "type": "variant_picker",
+      "name": "Variant Picker",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "picker_type",
+          "label": "Picker Type",
+          "options": [
+            { "value": "button", "label": "Button" },
+            { "value": "dropdown", "label": "Dropdown" }
+          ],
+          "default": "button"
+        }
+      ]
+    },
+    {
+      "type": "quantity_selector",
+      "name": "Quantity Selector",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "quantity_label",
+          "label": "Quantity Label",
+          "default": "QTY"
+        }
+      ]
+    },
+    {
+      "type": "buy_buttons",
+      "name": "Add to Cart Button",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "ADD TO CART"
+        }
+      ]
+    },
     {
       "type": "bundle_product",
       "name": "Bundle Product",
@@ -247,13 +340,44 @@ function addToCart() {
           "type": "product",
           "id": "product",
           "label": "Select Bundle Product"
+        },
+        {
+          "type": "text",
+          "id": "bundle_title",
+          "label": "Bundle Section Title",
+          "default": "BUNDLE & SAVE"
+        }
+      ]
+    },
+    {
+      "type": "dynamic_checkout",
+      "name": "Dynamic Checkout",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "label": "Show Dynamic Checkout Button",
+          "default": true
         }
       ]
     }
   ],
   "presets": [
     {
-      "name": "Product Detail"
+      "name": "Product Detail",
+      "blocks": [
+        { "type": "text" },
+        { "type": "title" },
+        { "type": "description" },
+        { "type": "price" },
+        { "type": "rating" },
+        { "type": "promotion" },
+        { "type": "variant_picker" },
+        { "type": "quantity_selector" },
+        { "type": "buy_buttons" },
+        { "type": "dynamic_checkout" }
+      ]
     }
   ]
 }

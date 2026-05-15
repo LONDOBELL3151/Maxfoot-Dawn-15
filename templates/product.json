@@ -3,15 +3,48 @@
     "main": {
       "type": "main-product",
       "settings": {
-        "padding_top": 80,
-        "badge_text": "BEST SELLER",
-        "enable_star_rating": true,
-        "star_count": 5,
-        "review_label": "Verified Owner",
-        "show_dynamic_checkout": true,
-        "promotion_badge": "",
-        "promotion_text": ""
-      }
+        "padding_top": 80
+      },
+      "blocks": [
+        {
+          "type": "text",
+          "settings": {
+            "text": "BEST SELLER"
+          }
+        },
+        {
+          "type": "title"
+        },
+        {
+          "type": "description"
+        },
+        {
+          "type": "price"
+        },
+        {
+          "type": "rating",
+          "settings": {
+            "enable_star_rating": true,
+            "star_count": 5,
+            "review_label": "Verified Owner"
+          }
+        },
+        {
+          "type": "promotion"
+        },
+        {
+          "type": "variant_picker"
+        },
+        {
+          "type": "quantity_selector"
+        },
+        {
+          "type": "buy_buttons"
+        },
+        {
+          "type": "dynamic_checkout"
+        }
+      ]
     }
   },
   "order": ["main"]

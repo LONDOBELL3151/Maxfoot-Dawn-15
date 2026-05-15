@@ -403,20 +403,25 @@
   font-weight: 700;
 }
 
-/* Variant Picker */
-.product-form__input--swatch {
+/* Variant Picker Section */
+.pdp-variant-section {
+  border-top: 1px solid #E5E5E5;
+  padding-top: 24px;
+}
+
+.pdp-variant-section .product-form__input--swatch {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.product-form__input--swatch fieldset {
+.pdp-variant-section .product-form__input--swatch fieldset {
   border: none;
   padding: 0;
   margin: 0;
 }
 
-.product-form__input--swatch legend.form__label {
+.pdp-variant-section .product-form__input--swatch legend.form__label {
   font-family: 'Space Grotesk', Arial, sans-serif;
   font-size: 12px;
   font-weight: 700;
@@ -427,14 +432,14 @@
   padding: 0;
 }
 
-.product-form__input--swatch input[type="radio"] {
+.pdp-variant-section .product-form__input--swatch input[type="radio"] {
   position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-.product-form__input--swatch label {
+.pdp-variant-section .product-form__input--swatch label {
   display: inline-block;
   width: 36px;
   height: 36px;
@@ -446,29 +451,18 @@
   margin-right: 12px;
 }
 
-.product-form__input--swatch label:hover {
+.pdp-variant-section .product-form__input--swatch label:hover {
   transform: scale(1.1);
 }
 
-.product-form__input--swatch input[type="radio"]:checked + label {
+.pdp-variant-section .product-form__input--swatch input[type="radio"]:checked + label {
   border-color: #FFC426;
   box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #FFC426;
 }
 
-.product-form__input--swatch input[type="radio"].disabled + label {
+.pdp-variant-section .product-form__input--swatch input[type="radio"].disabled + label {
   opacity: 0.4;
   cursor: not-allowed;
-}
-
-.product-form__input--swatch input[type="radio"].disabled + label::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #9ca3af;
-  transform: rotate(-45deg);
 }
 
 /* Variant Selects */
@@ -476,27 +470,17 @@ variant-selects {
   display: block;
 }
 
-.pdp-color-section {
-  border-top: 1px solid #E5E5E5;
-  padding-top: 24px;
+/* Dynamic Checkout */
+.pdp-dynamic-checkout {
+  margin-top: 12px;
 }
 
-.pdp-color-label {
-  font-family: 'Space Grotesk', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #5f5e5e;
-  margin-bottom: 12px;
+.pdp-dynamic-checkout .shopify-payment-button {
+  width: 100%;
 }
 
 /* Product Form */
 .product-form {
-  margin: 0;
-}
-
-.product-form .form {
   display: flex;
   flex-direction: column;
   gap: 24px;
