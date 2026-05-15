@@ -74,18 +74,10 @@
         </div>
         {%- endif -%}
 
-        {%- if section.settings.show_color_selector -%}
-        <div class="pdp-color-section">
-          <p class="pdp-color-label">SELECT COLOR {% if section.settings.selected_color != blank %}- {{ section.settings.selected_color | escape }}{% endif %}</p>
-          <div class="pdp-color-options">
-            {%- for color in section.blocks -%}
-              {%- if color.type == 'color' -%}
-                <button class="pdp-color-btn {{ color.settings.color_name | downcase }} {% if forloop.first %}selected{% endif %}" data-color="{{ color.settings.color_name | escape }}" style="background-color: {{ color.settings.color_hex }};" onclick="selectColor(this)"></button>
-              {%- endif -%}
-            {%- endfor -%}
-          </div>
-        </div>
-        {%- endif -%}
+        {%- comment %} Variant Picker - auto pulls from product variants {%- endcomment -%}
+        {%- unless product.has_only_default_variant -%}
+          {%- render 'product-variant-picker', product: product, block: block, product_form_id: 'product-form-' | append: section.id -%}
+        {%- endunless -%}
 
         <div class="pdp-quantity-section">
           <span class="pdp-quantity-label">QTY</span>
@@ -96,44 +88,44 @@
           </div>
         </div>
 
-        <div class="pdp-actions">
-          <button class="pdp-add-to-cart" onclick="addToCart()">
-            ADD TO CART
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-          <button class="pdp-wishlist-btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-          </button>
-        </div>
+        <product-form class="product-form" id="product-form-{{ section.id }}">
+          {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
 
-        {%- if section.blocks.size > 0 -%}
-        {%- for block in section.blocks -%}
-          {%- if block.type == 'bundle_product' -%}
-            {%- assign bundle_product = all_products[block.settings.product] -%}
-            {%- if bundle_product != blank -%}
-            <div class="pdp-bundle-section">
-              {%- if forloop.first -%}
-              <p class="pdp-bundle-title">BUNDLE & SAVE</p>
-              {%- endif -%}
-              <label class="pdp-bundle-item">
-                <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
-                <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
-                <div class="pdp-bundle-details">
-                  <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
-                  <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
-                </div>
-              </label>
+            <div class="pdp-actions">
+              <button type="submit" class="pdp-add-to-cart" onclick="addToCart()">
+                ADD TO CART
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </button>
+              <button type="button" class="pdp-wishlist-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </button>
             </div>
-            {%- endif -%}
-          {%- endif -%}
-        {%- endfor -%}
-        {%- endif -%}
 
-        <product-form class="product-form">
-          {%- form 'product', product, id: 'product-form-installment', class: 'installment' -%}
-            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {%- comment %} Bundle Section - between Add to Cart and Checkout {%- endcomment -%}
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'bundle_product' -%}
+                {%- assign bundle_product = all_products[block.settings.product] -%}
+                {%- if bundle_product != blank -%}
+                <div class="pdp-bundle-section" {{ block.shopify_attributes }}>
+                  {%- if forloop.first -%}
+                  <p class="pdp-bundle-title">BUNDLE & SAVE</p>
+                  {%- endif -%}
+                  <label class="pdp-bundle-item">
+                    <input type="checkbox" class="pdp-bundle-checkbox" data-bundle-id="{{ bundle_product.id }}" onchange="updateBundleSelection()">
+                    <img class="pdp-bundle-image" src="{{ bundle_product.featured_image | image_url: width: 120 }}" alt="{{ bundle_product.title | escape }}">
+                    <div class="pdp-bundle-details">
+                      <p class="pdp-bundle-name">{{ bundle_product.title | escape }}</p>
+                      <p class="pdp-bundle-price">{{ bundle_product.price | money }}</p>
+                    </div>
+                  </label>
+                </div>
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+
             {%- if section.settings.show_dynamic_checkout -%}
-            {{ form | payment_button }}
+              {{ form | payment_button }}
             {%- endif -%}
           {%- endform -%}
         </product-form>
@@ -144,7 +136,6 @@
 
 <script>
 let selectedQuantity = 1;
-let selectedColor = '';
 
 function changeMainImage(el) {
   document.querySelectorAll('.pdp-thumbnail').forEach(t => t.classList.remove('active'));
@@ -160,26 +151,14 @@ function changeQuantity(delta) {
   selectedQuantity = val;
 }
 
-function selectColor(el) {
-  document.querySelectorAll('.pdp-color-btn').forEach(b => b.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedColor = el.dataset.color;
-}
-
 function updateBundleSelection() {
   // Bundle selection is tracked via checkbox state
 }
 
 function addToCart() {
-  const formData = new FormData();
-  formData.append('id', '{{ product.selected_or_first_available_variant.id }}');
-  formData.append('quantity', selectedQuantity);
-
-  // Add bundle products if selected
-  document.querySelectorAll('.pdp-bundle-checkbox:checked').forEach(cb => {
-    formData.append('items[][id', cb.dataset.bundleId);
-    formData.append('items[][quantity', '1');
-  });
+  const form = document.getElementById('product-form-{{ section.id }}');
+  const formData = new FormData(form);
+  formData.set('quantity', selectedQuantity);
 
   fetch('/cart/add.js', {
     method: 'POST',
@@ -194,14 +173,6 @@ function addToCart() {
     alert('Unable to add to cart');
   });
 }
-
-// Initialize
-document.addEventListener('DOMContentLoaded', function() {
-  const firstColor = document.querySelector('.pdp-color-btn');
-  if (firstColor) {
-    selectedColor = firstColor.dataset.color;
-  }
-});
 </script>
 
 {% schema %}
@@ -248,18 +219,6 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     {
       "type": "checkbox",
-      "id": "show_color_selector",
-      "label": "Show Color Selector",
-      "default": true
-    },
-    {
-      "type": "text",
-      "id": "selected_color",
-      "label": "Selected Color Name",
-      "info": "e.g., Matte Black"
-    },
-    {
-      "type": "checkbox",
       "id": "show_dynamic_checkout",
       "label": "Show Dynamic Checkout Button",
       "default": true
@@ -282,23 +241,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   ],
   "blocks": [
-    {
-      "type": "color",
-      "name": "Color Option",
-      "settings": [
-        {
-          "type": "text",
-          "id": "color_name",
-          "label": "Color Name",
-          "info": "e.g., Matte Black"
-        },
-        {
-          "type": "color",
-          "id": "color_hex",
-          "label": "Color Hex"
-        }
-      ]
-    },
     {
       "type": "bundle_product",
       "name": "Bundle Product",

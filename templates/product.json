@@ -8,35 +8,10 @@
         "enable_star_rating": true,
         "star_count": 5,
         "review_label": "Verified Owner",
-        "show_color_selector": true,
-        "selected_color": "Matte Black",
         "show_dynamic_checkout": true,
         "promotion_badge": "",
         "promotion_text": ""
-      },
-      "blocks": [
-        {
-          "type": "color",
-          "settings": {
-            "color_name": "Matte Black",
-            "color_hex": "#1A1C1C"
-          }
-        },
-        {
-          "type": "color",
-          "settings": {
-            "color_name": "Silver",
-            "color_hex": "#A1A1AA"
-          }
-        },
-        {
-          "type": "color",
-          "settings": {
-            "color_name": "White",
-            "color_hex": "#FAFAFA"
-          }
-        }
-      ]
+      }
     }
   },
   "order": ["main"]
