@@ -418,15 +418,13 @@
   background-color: #F3F3F4;
 }
 
-.pdp-bundle-section input[type='checkbox'],
-.pdp-bundle-checkbox {
+.pdp-bundle-section .pdp-bundle-item input[type='checkbox'] {
   width: 32px !important;
   height: 32px !important;
   accent-color: #FFC426;
   cursor: pointer;
   flex-shrink: 0;
-  appearance: none;
-  -webkit-appearance: none;
+  margin: 0 !important;
 }
 
 .pdp-bundle-image {
