@@ -668,6 +668,10 @@ variant-selects {
     word-wrap: break-word;
   }
 
+  .pdp-color-options {
+    padding-left: 2px;
+  }
+
   .pdp-price {
     font-size: 24px;
   }
