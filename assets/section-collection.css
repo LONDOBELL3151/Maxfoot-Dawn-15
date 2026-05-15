@@ -1,0 +1,314 @@
+/* MAXFOOT Collection Page Styles */
+
+.collection-section {
+  width: 100%;
+}
+
+.collection-container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.collection-header {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 24px;
+  align-items: end;
+  margin-bottom: 48px;
+}
+
+.collection-title {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #1A1C1C;
+  margin: 0;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.collection-description {
+  border-left: 1px solid #D3C5AC;
+  padding-left: 24px;
+}
+
+.collection-description p {
+  font-family: 'Lexend', Arial, sans-serif;
+  font-size: 18px;
+  color: #5f5e5e;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+/* Product Card */
+.collection-card {
+  background: #FFFFFF;
+  border: 1px solid rgba(209, 198, 172, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.collection-card:hover {
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.collection-card-media {
+  position: relative;
+  aspect-ratio: 1/1;
+  background-color: #F3F3F4;
+  overflow: hidden;
+}
+
+.collection-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 32px;
+  transition: transform 0.5s ease;
+}
+
+.collection-card:hover .collection-card-media img {
+  transform: scale(1.05);
+}
+
+.collection-card-label {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.collection-card-label.gold {
+  background-color: #FFC426;
+  color: #1A1C1C;
+}
+
+.collection-card-label.black {
+  background-color: #1A1C1C;
+  color: #FFFFFF;
+}
+
+.collection-card-content {
+  padding: 24px;
+}
+
+.collection-card-meta {
+  margin-bottom: 16px;
+}
+
+.collection-card-title {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1A1C1C;
+  margin: 0 0 4px 0;
+  line-height: 1.3;
+}
+
+.collection-card-subtitle {
+  font-family: 'Lexend', Arial, sans-serif;
+  font-size: 14px;
+  color: #5f5e5e;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Price + Review row */
+.collection-card-pricing {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid rgba(209, 198, 172, 0.2);
+  margin-bottom: 16px;
+}
+
+.collection-price-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.collection-card-price {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1A1C1C;
+  line-height: 1;
+}
+
+.collection-card-compare-price {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 14px;
+  color: #9ca3af;
+  text-decoration: line-through;
+  line-height: 1;
+}
+
+.collection-review-wrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.collection-review-star {
+  width: 18px;
+  height: 18px;
+  color: #FFC426;
+  flex-shrink: 0;
+}
+
+.collection-review-score {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1C1C;
+  line-height: 1;
+}
+
+/* Spec Display - 3 columns equal width */
+.collection-card-specs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  padding: 16px 0;
+  border-top: 1px solid rgba(209, 198, 172, 0.2);
+  margin-bottom: 16px;
+}
+
+.collection-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 8px;
+  text-align: left;
+}
+
+.collection-spec-item:first-child {
+  padding-left: 0;
+}
+
+.collection-spec-item:not(:last-child) {
+  border-right: 1px solid rgba(209, 198, 172, 0.2);
+}
+
+.collection-spec-label {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #5f5e5e;
+}
+
+.collection-spec-value {
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #1A1C1C;
+  line-height: 1.2;
+}
+
+.collection-spec-value.gold {
+  color: #785a00;
+}
+
+/* Button */
+.collection-card-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #1A1C1C;
+  color: #FFFFFF;
+  font-family: 'Space Grotesk', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 14px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.collection-card:hover .collection-card-btn {
+  background-color: #FFC426;
+  color: #785a00;
+}
+
+/* Responsive */
+@media screen and (max-width: 989px) {
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .collection-header {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .collection-section {
+    padding-top: 72px !important;
+    padding-bottom: 72px !important;
+  }
+
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .collection-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .collection-description {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .collection-description p {
+    font-size: 16px;
+  }
+
+  .collection-container {
+    padding: 0 24px;
+  }
+
+  .collection-card-content {
+    padding: 20px;
+  }
+
+  .collection-card-title {
+    font-size: 16px;
+  }
+
+  .collection-card-specs {
+    padding: 12px 0;
+  }
+
+  .collection-spec-value {
+    font-size: 14px;
+  }
+}
