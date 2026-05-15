@@ -623,8 +623,7 @@ variant-selects {
   }
 
   .pdp-wishlist-btn {
-    width: 52px;
-    height: 52px;
+    display: none;
   }
 
   .pdp-quantity-section {
