@@ -3,6 +3,7 @@
   padding-top: 80px;
   padding-bottom: 0;
   background-color: #FFFFFF;
+  overflow-x: hidden;
 }
 
 .pdp-container {
@@ -16,6 +17,7 @@
   grid-template-columns: 1fr 1fr;
   gap: 80px;
   padding: 60px 0;
+  max-width: 100%;
 }
 
 /* Product Gallery */
@@ -23,6 +25,7 @@
   position: sticky;
   top: 100px;
   align-self: start;
+  min-width: 0;
 }
 
 .pdp-main-image {
@@ -35,6 +38,8 @@
 
 .pdp-main-image img {
   width: 100%;
+  max-width: 100%;
+  object-fit: contain;
   height: 100%;
   object-fit: contain;
   padding: 40px;
@@ -86,6 +91,8 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
+  word-wrap: break-word;
 }
 
 .pdp-badges {
@@ -542,39 +549,58 @@ variant-selects {
 @media screen and (max-width: 749px) {
   .pdp-section {
     padding-top: 40px;
+    overflow-x: hidden;
   }
 
   .pdp-container {
     padding: 0 16px;
+    max-width: 100%;
   }
 
   .pdp-grid {
+    grid-template-columns: 1fr;
     gap: 24px;
     padding: 24px 0;
+    overflow-x: hidden;
+  }
+
+  .pdp-gallery {
+    position: static;
+    width: 100%;
+    max-width: 100%;
   }
 
   .pdp-main-image {
     border-radius: 12px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .pdp-thumbnails {
     gap: 8px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .pdp-thumbnail {
     width: 64px;
+    flex-shrink: 0;
   }
 
   .pdp-info {
     gap: 16px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .pdp-title {
     font-size: 24px;
+    word-wrap: break-word;
   }
 
   .pdp-subtitle {
     font-size: 14px;
+    word-wrap: break-word;
   }
 
   .pdp-price {
@@ -588,6 +614,7 @@ variant-selects {
   .pdp-actions {
     flex-direction: column;
     gap: 12px;
+    width: 100%;
   }
 
   .pdp-add-to-cart {
@@ -602,29 +629,42 @@ variant-selects {
 
   .pdp-quantity-section {
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .pdp-bundle-item {
     padding: 10px;
     gap: 10px;
+    overflow: hidden;
   }
 
   .pdp-bundle-image {
     width: 50px;
     height: 50px;
+    flex-shrink: 0;
   }
 
   .pdp-bundle-name {
     font-size: 13px;
+    word-wrap: break-word;
   }
 
   .pdp-bundle-price {
     font-size: 13px;
   }
 
+  .pdp-bundle-details {
+    min-width: 0;
+    overflow: hidden;
+  }
+
   .pdp-promotion-box {
     padding: 10px 12px;
     gap: 8px;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
     flex-wrap: wrap;
   }
 
