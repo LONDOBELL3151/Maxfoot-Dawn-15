@@ -288,7 +288,7 @@
   align-items: center !important;
   justify-content: center !important;
   line-height: 1 !important;
-  padding: 0 16px !important;
+  padding: 0 !important;
   overflow: hidden !important;
   position: relative !important;
 }
@@ -361,6 +361,7 @@
   line-height: 1;
   overflow: hidden;
   position: relative;
+  padding: 0;
 }
 
 .pdp-add-to-cart:hover {
@@ -704,6 +705,7 @@ variant-selects {
     min-height: 44px !important;
     max-height: 44px !important;
     overflow: hidden !important;
+    padding: 0 !important;
   }
 
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::before,
@@ -715,6 +717,7 @@ variant-selects {
     height: 44px !important;
     min-height: 44px !important;
     max-height: 44px !important;
+    padding: 0 !important;
   }
 
   .pdp-quantity-section {
