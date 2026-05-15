@@ -89,7 +89,7 @@
         </div>
 
         <product-form class="product-form" id="product-form-{{ section.id }}">
-          {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+          {%- form 'product', product, id: 'product-form-' | append: section.id, class: 'form' -%}
             <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" class="product-variant-id">
 
             <div class="pdp-actions">
