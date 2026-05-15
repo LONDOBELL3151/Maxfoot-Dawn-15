@@ -76,11 +76,7 @@
               {%- when 'promotion' -%}
                 {%- if block.settings.promotion_badge != blank -%}
                 <div class="pdp-promotion-box" {{ block.shopify_attributes }}>
-                  {%- if block.settings.promotion_badge != blank -%}
-                  <div class="pdp-promotion-header">
-                    <span class="pdp-promotion-badge">{{ block.settings.promotion_badge | escape }}</span>
-                  </div>
-                  {%- endif -%}
+                  <span class="pdp-promotion-badge">{{ block.settings.promotion_badge | escape }}</span>
                   {%- if block.settings.promotion_text != blank -%}
                   <span class="pdp-promotion-text">{{ block.settings.promotion_text | escape }}</span>
                   {%- endif -%}
