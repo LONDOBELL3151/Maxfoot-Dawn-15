@@ -503,8 +503,12 @@ variant-selects {
   gap: 24px;
 }
 
-/* Responsive */
+/* Responsive - Tablet */
 @media screen and (max-width: 989px) {
+  .pdp-section {
+    padding-top: 60px;
+  }
+
   .pdp-grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -518,23 +522,149 @@ variant-selects {
   .pdp-container {
     padding: 0 24px;
   }
+
+  .pdp-title {
+    font-size: 28px;
+  }
+
+  .pdp-price {
+    font-size: 28px;
+  }
+
+  .pdp-variant-section .product-form__input--swatch label {
+    width: 34px;
+    height: 34px;
+    margin-right: 10px;
+  }
 }
 
+/* Responsive - Mobile */
 @media screen and (max-width: 749px) {
   .pdp-section {
-    padding-top: 60px;
+    padding-top: 40px;
+  }
+
+  .pdp-container {
+    padding: 0 16px;
+  }
+
+  .pdp-grid {
+    gap: 24px;
+    padding: 24px 0;
+  }
+
+  .pdp-main-image {
+    border-radius: 12px;
   }
 
   .pdp-thumbnails {
-    grid-template-columns: repeat(4, 1fr);
     gap: 8px;
+  }
+
+  .pdp-thumbnail {
+    width: 64px;
+  }
+
+  .pdp-info {
+    gap: 16px;
+  }
+
+  .pdp-title {
+    font-size: 24px;
+  }
+
+  .pdp-subtitle {
+    font-size: 14px;
+  }
+
+  .pdp-price {
+    font-size: 24px;
+  }
+
+  .pdp-compare-price {
+    font-size: 16px;
   }
 
   .pdp-actions {
     flex-direction: column;
+    gap: 12px;
+  }
+
+  .pdp-add-to-cart {
+    width: 100%;
+    height: 52px;
   }
 
   .pdp-wishlist-btn {
-    width: 100%;
+    width: 52px;
+    height: 52px;
+  }
+
+  .pdp-quantity-section {
+    flex-wrap: wrap;
+  }
+
+  .pdp-bundle-item {
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .pdp-bundle-image {
+    width: 50px;
+    height: 50px;
+  }
+
+  .pdp-bundle-name {
+    font-size: 13px;
+  }
+
+  .pdp-bundle-price {
+    font-size: 13px;
+  }
+
+  .pdp-promotion-box {
+    padding: 10px 12px;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pdp-promotion-badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+
+  .pdp-promotion-text {
+    font-size: 12px;
+  }
+
+  .product-form {
+    gap: 16px;
+  }
+
+  .pdp-dynamic-checkout .shopify-payment-button__more-options {
+    font-size: 12px;
+  }
+
+  .pdp-variant-section {
+    padding-top: 16px;
+  }
+
+  .pdp-variant-section .product-form__input--swatch legend.form__label {
+    font-size: 11px;
+    margin-bottom: 10px;
+  }
+
+  .pdp-variant-section .product-form__input--swatch label {
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+
+  .pdp-quantity-section {
+    padding-top: 16px;
+  }
+
+  .pdp-bundle-section {
+    padding-top: 16px;
   }
 }
