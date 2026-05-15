@@ -419,8 +419,8 @@
 }
 
 .pdp-bundle-checkbox {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   accent-color: #FFC426;
   cursor: pointer;
   flex-shrink: 0;
@@ -729,8 +729,8 @@ variant-selects {
   }
 
   .pdp-bundle-checkbox {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
 
   .pdp-bundle-image {
