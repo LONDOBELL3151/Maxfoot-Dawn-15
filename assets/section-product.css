@@ -277,9 +277,12 @@
   width: 100%;
 }
 
-.pdp-dynamic-checkout .shopify-payment-button .shopify-payment-button__button--unbranded,
+.pdp-dynamic-checkout .shopify-payment-button button,
+.pdp-dynamic-checkout .shopify-payment-button [role='button'],
+.pdp-dynamic-checkout .shopify-payment-button__button,
 .pdp-dynamic-checkout .shopify-payment-button__button--unbranded,
-.pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
+.pdp-dynamic-checkout button.shopify-payment-button__button--unbranded,
+.pdp-dynamic-checkout .shopify-payment-button .shopify-payment-button__button--unbranded {
   width: 100% !important;
   height: 56px !important;
   min-height: 56px !important;
@@ -295,24 +298,8 @@
   position: relative !important;
 }
 
-.pdp-dynamic-checkout .shopify-payment-button .shopify-payment-button__button--unbranded,
-.pdp-dynamic-checkout .shopify-payment-button__button--unbranded,
-.pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
-  width: 100% !important;
-  height: 56px !important;
-  min-height: 56px !important;
-  max-height: 56px !important;
-  border-radius: 8px !important;
-  box-sizing: border-box !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  line-height: 1 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  position: relative !important;
-}
-
+.pdp-dynamic-checkout .shopify-payment-button button::before,
+.pdp-dynamic-checkout .shopify-payment-button button::after,
 .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::before,
 .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::after {
   display: none !important;
@@ -706,8 +693,11 @@ variant-selects {
     display: none;
   }
 
-  .pdp-dynamic-checkout .shopify-payment-button .shopify-payment-button__button--unbranded,
+  .pdp-dynamic-checkout .shopify-payment-button button,
+  .pdp-dynamic-checkout .shopify-payment-button [role='button'],
+  .pdp-dynamic-checkout .shopify-payment-button__button,
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded,
+  .pdp-dynamic-checkout .shopify-payment-button .shopify-payment-button__button--unbranded,
   .pdp-dynamic-checkout button.shopify-payment-button__button--unbranded {
     height: 56px !important;
     min-height: 56px !important;
@@ -716,6 +706,8 @@ variant-selects {
     padding: 0 !important;
   }
 
+  .pdp-dynamic-checkout .shopify-payment-button button::before,
+  .pdp-dynamic-checkout .shopify-payment-button button::after,
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::before,
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded::after {
     display: none !important;
