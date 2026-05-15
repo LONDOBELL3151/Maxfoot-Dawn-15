@@ -280,12 +280,15 @@
 .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
   width: 100%;
   height: 56px;
+  min-height: 56px;
+  max-height: 56px;
   border-radius: 8px;
   box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  padding: 0 16px;
 }
 
 .pdp-dynamic-checkout .shopify-payment-button__more-options {
@@ -662,6 +665,8 @@ variant-selects {
   .pdp-add-to-cart {
     width: 100%;
     height: 52px;
+    min-height: 52px;
+    max-height: 52px;
   }
 
   .pdp-wishlist-btn {
@@ -670,6 +675,8 @@ variant-selects {
 
   .pdp-dynamic-checkout .shopify-payment-button__button--unbranded {
     height: 52px;
+    min-height: 52px;
+    max-height: 52px;
   }
 
   .pdp-quantity-section {
