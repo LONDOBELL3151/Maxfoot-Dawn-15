@@ -487,6 +487,15 @@ variant-selects {
   width: 100%;
 }
 
+.pdp-dynamic-checkout .shopify-payment-button__more-options {
+  color: #5f5e5e;
+  margin: 1rem 0;
+}
+
+.pdp-dynamic-checkout .shopify-payment-button__more-options:hover {
+  color: #1A1C1C;
+}
+
 /* Product Form */
 .product-form {
   display: flex;
