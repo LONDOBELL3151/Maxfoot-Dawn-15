@@ -86,7 +86,7 @@
               {%- when 'variant_picker' -%}
                 {%- unless product.has_only_default_variant -%}
                   <div class="pdp-variant-section" {{ block.shopify_attributes }}>
-                    {% render 'product-variant-picker', product: product, block: block, product_form_id: 'product-form-' | append: section.id %}
+                    {% render 'product-variant-picker', product: product, block: block, product_form_id: 'product-form-', append: section.id %}
                   </div>
                 {%- endunless -%}
 
@@ -377,4 +377,15 @@ function addToCart() {
     }
   ]
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-variant-picker', product: product, block: block, product_form_id:
+    'product-form-' | append: section.id %}"
+  to: "{% render 'product-variant-picker', product: product, block: block, product_form_id:
+    'product-form-', append: section.id %}"
+  position: 4702..4825
+{%- endcomment -%}
